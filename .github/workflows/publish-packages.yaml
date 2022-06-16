@@ -29,9 +29,14 @@ jobs:
           cache: npm
           node-version: ${{ matrix.node }}
           registry-url: "https://npm.pkg.github.com"
-          scope: "@octocat"
+          scope: "@sps"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: "Setup npm"
+        run: |
+          npm set @sps:registry=https://npm.pkg.github.com/sps
+          npm set "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PAT }}
 
       - name: Log
         run: |
