@@ -28,7 +28,14 @@ jobs:
         with:
           cache: npm
           node-version: ${{ matrix.node }}
-          registry-url: https://npm.pkg.github.com/
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@octocat"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: Log
+        run: |
+          cat ~/.npmrc
 
       - name: Git Identity
         run: |
