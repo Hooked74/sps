@@ -15,9 +15,5 @@
     "esbuild": "^0.14.44",
     "vite": "^2.9.12"
   },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/@hooked74"
-  },
   "repository": "https://github.com/hooked74/sps.git"
 }
