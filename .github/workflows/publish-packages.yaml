@@ -37,9 +37,6 @@ jobs:
 
       - name: "Version and publish"
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor}}@users.noreply.github.com"
-
           npx lerna version --conventional-commits --changelog-preset angular --no-commit-hooks --yes
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
