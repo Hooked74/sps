@@ -10,5 +10,8 @@
     "@types/react-dom": "^18.0.5",
     "vite": "^2.9.12"
   },
-  "repository": "https://github.com/hooked74/sps.git"
+  "repository": "https://github.com/hooked74/sps.git",
+  "publishConfig": {
+    "access": "public"
+  }
 }
