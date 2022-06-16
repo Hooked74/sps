@@ -43,6 +43,7 @@ jobs:
       - name: Log
         run: |
           cat ~/.npmrc
+          cat /home/runner/work/_temp/.npmrc
 
       - name: Git Identity
         run: |
