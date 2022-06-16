@@ -31,7 +31,7 @@ declare interface Tuple<T> {
 declare interface ReadonlyDictionary<T> {
   readonly [key: string]: T;
 }
-declare type SkipFirstArrayElement<Array extends any[]> = Array extends [FirstElement, ...infer P]
+declare type SkipFirstArrayElement<Array extends any[]> = Array extends [any, ...infer P]
   ? P
   : never;
 
@@ -80,7 +80,7 @@ declare type DeepPartial<T> = T extends object
 /**
  * *Transform*
  */
-declare type EnumToProps<T, U, O = {}> = {
+declare type EnumToProps<T, U, O extends Partial<{ [P in keyof T]: any }> = any> = {
   [P in keyof T]: keyof O[P] extends never ? U : O[P];
 };
 declare type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
@@ -116,8 +116,4 @@ declare module "*.svg" {
   export const ReactSvgComponent: React.FunctionComponent<
     React.SVGProps<SVGSVGElement> & { title?: string }
   >;
-
-  const src: string;
-
-  export default src;
 }

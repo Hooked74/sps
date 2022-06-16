@@ -27,20 +27,25 @@ jobs:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
 
+      - name: Test
+        run: |
+          echo ${{ toJSON(matrix) }}
+
       - name: Git Identity
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
 
-      # - name: Install
-      #   run: npm run deps:install
+      - name: Install
+        run: npm run deps:install
 
       - name: "Version and publish"
         run: |
           npx lerna version --conventional-commits --changelog-preset angular --no-commit-hooks --yes
+          npx lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
           # git remote set-url origin "https://$GITHUB_ACTOR:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-# npx lerna publish from-git --yes
+#
