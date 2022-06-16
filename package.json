@@ -122,5 +122,10 @@
     "development": [
       "last 1 chrome version"
     ]
-  }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@hooked74"
+  },
+  "repository": "https://github.com/hooked74/sps.git"
 }
