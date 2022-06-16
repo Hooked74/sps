@@ -1,0 +1,13 @@
+{
+  "*.{ts,tsx,js,jsx}": [
+    "npm run prettier --",
+    "npm run lint:scripts:file --"
+  ],
+  "*.{scss,less,css}": [
+    "npm run prettier --",
+    "npm run lint:styles:file --"
+  ],
+  "*.{json,md}": [
+    "npm run prettier --"
+  ]
+}

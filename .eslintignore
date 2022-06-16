@@ -1,0 +1,4 @@
+/**/*.d.ts
+*.html
+**/dist
+**/coverage

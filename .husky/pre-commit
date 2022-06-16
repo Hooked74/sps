@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx --no-install lint-staged
+
+if [[ $(git diff --cached --name-only | grep -E "\.tsx?$") ]]; then
+  echo 'Typescript files found. Run "tsc --noEmit".';
+  npx --no-install tsc --noEmit --project "./tsconfig.json"
+fi

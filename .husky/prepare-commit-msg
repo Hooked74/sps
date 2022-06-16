@@ -1,0 +1,36 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Git Hook for JIRA_TASK_ID
+# Adds to the top of your commit message `JIRA_TASK_ID`, based on the prefix of the current branch `feature/AWG-562-add-linter`
+# Example: `feat: add SwiftLint -> `feat(AWG-562): add SwiftLint
+
+if [ ! command -v perl &> /dev/null ]; then
+    echo "perl could not be found"
+    exit 0;
+fi
+
+if [ -z "$BRANCHES_TO_SKIP" ]; then
+  BRANCHES_TO_SKIP=(main develop)
+fi
+
+COMMIT_FILE=$1;
+COMMIT_MSG=$(cat $1);
+SHORT_COMMIT_MSG=$(echo $(echo "$COMMIT_MSG" | perl -wnE "say for /^.+?:\s\K.+/g;"));
+COMMIT_PREFIX=$(echo $(echo "$COMMIT_MSG" | perl -wnE "say for /^\w+(?=\(|:)/g;"));
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD);
+JIRA_ID_IN_CURRENT_BRANCH_NAME=$(echo $(echo "$CURRENT_BRANCH" | grep -Eo "[A-Z0-9]{1,10}-[A-Z0-9]+"));
+JIRA_ID_IN_COMMIT_MESSAGE=$(echo $(echo "$COMMIT_MSG" | perl -wnE "say for /^\w+\(\K[^)]+/g;"));
+
+for BRANCHE_TO_SKIP in "${BRANCHES_TO_SKIP[@]}"
+do
+  if [ "$BRANCHE_TO_SKIP" == "$CURRENT_BRANCH" ]; then
+    exit 0;
+  fi
+done
+
+
+if [ "$JIRA_ID_IN_CURRENT_BRANCH_NAME" ] && [ ! "$JIRA_ID_IN_COMMIT_MESSAGE" ]; then
+  echo "$COMMIT_PREFIX($JIRA_ID_IN_CURRENT_BRANCH_NAME): $SHORT_COMMIT_MSG" > $COMMIT_FILE
+  echo "JIRA ID '$JIRA_ID_IN_CURRENT_BRANCH_NAME', matched in current branch name, prepended to commit message. (Use --no-verify to skip)"
+fi

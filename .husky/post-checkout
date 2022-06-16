@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+PREV_COMMIT=$1
+POST_COMMIT=$2
+
+if [[ -f package-lock.json ]]; then
+    DIFF=`git diff --shortstat $PREV_COMMIT..$POST_COMMIT package-lock.json`
+    if [[ $DIFF != "" ]]; then
+        echo "'package-lock.json' has been changed. Please, run 'npm ci' to update dependencies."
+    fi
+fi

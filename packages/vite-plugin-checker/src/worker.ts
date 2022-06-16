@@ -1,0 +1,107 @@
+import { ConfigEnv } from "vite";
+import { parentPort, Worker, workerData } from "worker_threads";
+
+import { ActionTypes } from "./types";
+
+import type {
+  ServeChecker,
+  ConfigureServeChecker,
+  ConfigAction,
+  ConfigureServerAction,
+  CheckerDiagnostic,
+  BuildCheckBin,
+  ServeAndBuildChecker,
+  SharedConfig,
+  UnrefAction,
+  BuildInCheckers,
+} from "./types";
+
+interface WorkerScriptOptions {
+  absFilename: string;
+  buildBin: BuildCheckBin;
+  serverChecker: ServeChecker;
+}
+
+export interface Script<T> {
+  mainScript: () => (config: T & SharedConfig, env: ConfigEnv) => ServeAndBuildChecker;
+  workerScript: () => void;
+}
+
+export function createScript<T extends Partial<BuildInCheckers>>({
+  absFilename,
+  buildBin,
+  serverChecker,
+}: WorkerScriptOptions): Script<T> {
+  type CheckerConfig = T & SharedConfig;
+
+  return {
+    mainScript: () => {
+      // initialized in main thread
+      const createWorker = (
+        checkerConfig: CheckerConfig,
+        env: ConfigEnv
+      ): ConfigureServeChecker => {
+        const isBuild = env.command === "build";
+        const worker = new Worker(absFilename, {
+          workerData: { env, checkerConfig },
+        });
+
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        return {
+          worker,
+          config: (config) => {
+            if (isBuild) return; // just run the command
+
+            const configAction: ConfigAction = { type: ActionTypes.CONFIG, payload: config };
+            worker.postMessage(configAction);
+          },
+          configureServer: (serverConfig) => {
+            const configureServerAction: ConfigureServerAction = {
+              type: ActionTypes.CONFIGURE_SERVER,
+              payload: serverConfig,
+            };
+            worker.postMessage(configureServerAction);
+          },
+        };
+      };
+
+      return (config, env) => ({
+        serve: createWorker(config, env),
+        build: { buildBin },
+      });
+    },
+    workerScript: () => {
+      // runs in worker thread
+      let diagnostic: CheckerDiagnostic | null = null;
+      if (!parentPort) throw Error("should have parentPort as file runs in worker thread");
+      const isBuild = workerData.env.command === "build";
+      // only run bin command and do not listen message in build mode
+
+      const port = parentPort.on(
+        "message",
+        (action: ConfigAction | ConfigureServerAction | UnrefAction) => {
+          switch (action.type) {
+            case ActionTypes.CONFIG: {
+              const checkerConfig: T & SharedConfig = workerData.checkerConfig;
+              diagnostic = serverChecker.createDiagnostic(checkerConfig);
+              diagnostic.config(action.payload);
+              break;
+            }
+            case ActionTypes.CONFIGURE_SERVER:
+              if (!diagnostic)
+                throw Error("diagnostic should be initialized in `config` hook of Vite");
+              diagnostic.configureServer(action.payload);
+              break;
+            case ActionTypes.UNREF:
+              port.unref();
+              break;
+          }
+        }
+      );
+
+      if (isBuild) {
+        port.unref();
+      }
+    },
+  };
+}

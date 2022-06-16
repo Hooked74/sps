@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$CURRENT_BRANCH" = "develop" ] || [[ "$CURRENT_BRANCH" =~ ^release ]] || [ "$CURRENT_BRANCH" = "main" ]; then
+    echo "YOU SHALL NOT PASS!\nDear $USER, you don't want to commit directly to the '$CURRENT_BRANCH' branch ;)"
+    exit 1
+fi
