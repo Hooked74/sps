@@ -1,5 +1,5 @@
 {
-  "name": "@sps/vite-plugin-checker",
+  "name": "@h74-sps/vite-plugin-checker",
   "version": "0.1.6",
   "files": [
     "dist",
