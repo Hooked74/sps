@@ -4,8 +4,6 @@ import { defineConfig, UserConfig } from "vite";
 import checker from "@h74-sps/vite-plugin-checker";
 import { move, existsSync } from "fs-extra";
 
-console.log(123);
-
 export const createLibConfig = (config: UserConfig) =>
   defineConfig({
     ...config,
