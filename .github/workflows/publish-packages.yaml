@@ -38,9 +38,9 @@ jobs:
           npm set @sps:registry=https://npm.pkg.github.com/sps
           npm set "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PAT }}"
 
-      - name: Log
-        run: |
-          cat ~/.npmrc
+      # - name: Log
+      #   run: |
+      #     cat ~/.npmrc
 
       - name: Git Identity
         run: |
