@@ -32,5 +32,8 @@
     "vscode-languageserver-textdocument": "^1.0.5",
     "vscode-uri": "^3.0.3"
   },
-  "repository": "https://github.com/hooked74/sps.git"
+  "repository": "https://github.com/hooked74/sps.git",
+  "publishConfig": {
+    "access": "public"
+  }
 }
