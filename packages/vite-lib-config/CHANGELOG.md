@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/hooked74/sps/compare/v0.1.7...v0.1.8) (2022-06-16)
+
+
+### Bug Fixes
+
+* update publish-packages.yaml ([583ccd1](https://github.com/hooked74/sps/commit/583ccd19d033beb868902f2fd949f0d4681fe65c))
+
+
+
+
+
 ## [0.1.7](https://github.com/hooked74/sps/compare/v0.1.6...v0.1.7) (2022-06-16)
 
 
