@@ -17,11 +17,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup Node ${{ matrix.node_version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          cache: .npm
+          node-version: latest
           registry-url: https://npm.pkg.github.com/
 
       - name: Git Identity
