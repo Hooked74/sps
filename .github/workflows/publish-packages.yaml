@@ -35,12 +35,14 @@ jobs:
 
       - name: "Setup npm"
         run: |
-          npm set @sps:registry=https://npm.pkg.github.com/sps
-          npm set "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PAT }}"
+          echo -e "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}\n@sps:registry=https://npm.pkg.github.com\nalways-auth=true" >> ~/.npmrc;
 
-      # - name: Log
-      #   run: |
-      #     cat ~/.npmrc
+      # npm set @sps:registry=https://npm.pkg.github.com/sps
+      # npm set "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PAT }}"
+
+      - name: Log
+        run: |
+          cat ~/.npmrc
 
       - name: Git Identity
         run: |
