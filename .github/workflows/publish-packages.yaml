@@ -26,7 +26,7 @@ jobs:
       - name: Setup Node ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
-          # cache: npm
+          cache: npm
           node-version: ${{ matrix.node }}
           registry-url: "https://registry.npmjs.org"
           scope: "@h74-sps"
@@ -37,7 +37,13 @@ jobs:
           git config user.email "${{ github.actor}}@users.noreply.github.com"
 
       - name: Install
-        run: npm run deps:install
+        run: |
+          npm ci
+          npm run deps:packages:bootstrap
+
+      - name: Build
+        run: |
+          npm run build
 
       - name: "Version and publish"
         run: |
@@ -46,6 +52,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-          # git remote set-url origin "https://$GITHUB_ACTOR:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git"
 #
