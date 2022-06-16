@@ -1,6 +1,6 @@
 {
   "name": "@h74-sps/vite-lib-config",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "files": [
     "dist"
   ],
