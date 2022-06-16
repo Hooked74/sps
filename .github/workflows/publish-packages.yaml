@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: latest
+          node-version: 18
           registry-url: https://npm.pkg.github.com/
 
       - name: Git Identity
@@ -37,7 +37,7 @@ jobs:
 
       - name: "Version and publish"
         run: |
-          npx lerna version --conventional-commits  --changelog-preset angular-bitbucket --yes
+          npx lerna version --conventional-commits  --changelog-preset angular --yes
           npx lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
