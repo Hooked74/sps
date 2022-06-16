@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/Hooked74/sps/compare/v0.1.0...v0.1.1) (2022-06-16)
+
+
+### Bug Fixes
+
+* empty commit ([4674b49](https://github.com/Hooked74/sps/commit/4674b4947a8059314c1f97fa5d9f896de285f26f))
+* remove extend ProcessEnv ([9d75904](https://github.com/Hooked74/sps/commit/9d75904cbf1a0bad8b3606eaaecd4a95f1e60042))
+* update publish-packages.yaml ([16f29f6](https://github.com/Hooked74/sps/commit/16f29f65c2d4647989678ca09b25e816eb8f2ec4))
+* update publish-packages.yaml ([378c7b8](https://github.com/Hooked74/sps/commit/378c7b8f462ef3cbe1ce1737ea349a38fef828fe))
+
+
+
+
+
 # 0.1.0 (2022-06-16)
 
 
