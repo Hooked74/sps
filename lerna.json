@@ -1,14 +1,9 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "0.1.8",
   "command": {
     "version": {
       "allowBranch": ["main", "feature/*"]
-    },
-    "publish": {
-      "registry": "https://npm.pkg.github.com"
     }
   }
 }
