@@ -5,10 +5,10 @@
   "version": "0.1.8",
   "command": {
     "version": {
-      "allowBranch": [
-        "main",
-        "feature/*"
-      ]
+      "allowBranch": ["main", "feature/*"]
+    },
+    "publish": {
+      "registry": "https://npm.pkg.github.com"
     }
   }
 }
