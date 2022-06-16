@@ -3,7 +3,6 @@ on:
   pull_request:
     types: [closed]
     branches:
-      - development
       - main
 
 permissions:
@@ -38,12 +37,7 @@ jobs:
 
       - name: "Version and publish"
         run: |
-          if [ ${{ github.base_ref }} = development ]; then
-            npx lerna version --conventional-commits --changelog-preset angular-bitbucket --conventional-prerelease --preid beta --yes
-          else
-            npx lerna version --conventional-commits  --changelog-preset angular-bitbucket --conventional-graduate --yes
-          fi
-
+          npx lerna version --conventional-commits  --changelog-preset angular-bitbucket --yes
           npx lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
