@@ -28,17 +28,8 @@ jobs:
         with:
           # cache: npm
           node-version: ${{ matrix.node }}
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@sps"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
-
-      - name: "Setup npm"
-        run: |
-          echo -e "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}\n@sps:registry=https://npm.pkg.github.com\nalways-auth=true" >> ~/.npmrc;
-
-      # npm set @sps:registry=https://npm.pkg.github.com/sps
-      # npm set "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PAT }}"
+          registry-url: "https://registry.npmjs.org"
+          scope: "@h74-sps"
 
       - name: Log
         run: |
@@ -59,7 +50,7 @@ jobs:
           npx lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
           # git remote set-url origin "https://$GITHUB_ACTOR:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git"
 #

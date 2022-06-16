@@ -1,10 +1,8 @@
-/// <reference types="@sps/types"/>
+/// <reference types="@h74-sps/types"/>
 
 import { defineConfig, UserConfig } from "vite";
-import checker from "@sps/vite-plugin-checker";
+import checker from "@h74-sps/vite-plugin-checker";
 import { move, existsSync } from "fs-extra";
-
-console.log(123);
 
 export const createLibConfig = (config: UserConfig) =>
   defineConfig({
