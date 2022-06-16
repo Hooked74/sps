@@ -38,8 +38,7 @@ jobs:
 
       - name: Install
         run: |
-          npm ci
-          npm run deps:packages:bootstrap
+          npm runn deps:install
 
       - name: Build
         run: |
