@@ -2,10 +2,13 @@
   "packages": [
     "packages/*"
   ],
-  "version": "0.1.8",
+  "version": "0.1.9",
   "command": {
     "version": {
-      "allowBranch": ["main", "feature/*"]
+      "allowBranch": [
+        "main",
+        "feature/*"
+      ]
     },
     "publish": {
       "registry": "https://npm.pkg.github.com"
