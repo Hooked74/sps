@@ -5,12 +5,16 @@
 # Adds to the top of your commit message `JIRA_TASK_ID`, based on the prefix of the current branch `feature/AWG-562-add-linter`
 # Example: `feat: add SwiftLint -> `feat(AWG-562): add SwiftLint
 
-if [ ! command -v perl &> /dev/null ]; then
+
+if ! command -v perl &> /dev/null
+then
     echo "perl could not be found"
     exit 0;
 fi
 
-if [ -z "$BRANCHES_TO_SKIP" ]; then
+
+if [ -z "$BRANCHES_TO_SKIP" ];
+then
   BRANCHES_TO_SKIP=(main develop)
 fi
 
