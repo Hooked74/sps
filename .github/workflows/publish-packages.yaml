@@ -37,7 +37,7 @@ jobs:
 
       - name: "Version and publish"
         run: |
-          npx lerna version --conventional-commits  --changelog-preset angular --yes
+          npx lerna version --conventional-commits --changelog-preset angular --no-commit-hooks --yes
           npx lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
