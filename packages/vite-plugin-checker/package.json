@@ -1,6 +1,6 @@
 {
   "name": "@sps/vite-plugin-checker",
-  "version": "0.0.0",
+  "version": "0.1.6",
   "files": [
     "dist",
     "src"
