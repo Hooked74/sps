@@ -7,10 +7,6 @@
   ],
   "types": "./src/main.ts",
   "main": "./dist/main.js",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com"
-  },
   "scripts": {
     "build": "../../cli/cross-env NODE_ENV=production tsc"
   },
@@ -18,5 +14,10 @@
     "@svgr/core": "^6.2.1",
     "esbuild": "^0.14.44",
     "vite": "^2.9.12"
-  }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@hooked74"
+  },
+  "repository": "https://github.com/hooked74/sps.git"
 }
