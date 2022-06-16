@@ -11,8 +11,6 @@ declare namespace NodeJS {
     readonly VITE_REACT_CONTEXT_STORAGE_LOG_LEVEL: 0 | 1 | 2 | 3;
     readonly VITE_STORAGE_DEVTOOLS_ENABLE: boolean;
   }
-
-  interface ProcessEnv extends CustomProcessEnv {}
 }
 
 declare interface ImportMeta {
