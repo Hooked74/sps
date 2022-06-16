@@ -7,7 +7,7 @@
   "types": "./src/index.d.ts",
   "publishConfig": {
     "access": "public",
-    "@hooked74:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
     "@types/react": "^18.0.12",

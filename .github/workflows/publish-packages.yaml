@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GH_PAT }}
 
-      - name: Setup Node ${{ matrix.node_version }}
+      - name: Setup Node ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
           cache: npm

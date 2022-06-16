@@ -9,7 +9,7 @@
   "main": "./dist/main.js",
   "publishConfig": {
     "access": "public",
-    "@hooked74:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "build": "../../cli/cross-env NODE_ENV=production tsc"
