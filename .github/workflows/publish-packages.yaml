@@ -38,7 +38,7 @@ jobs:
 
       - name: Install
         run: |
-          npm runn deps:install
+          npm run deps:install
 
       - name: Build
         run: |
