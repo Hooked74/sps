@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+if (require("fs").existsSync(require("path").resolve(__dirname, "../node_modules/.bin/husky"))) {
+  require("child_process").execSync("npx husky install", { stdio: "inherit" });
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@sps/vite-plugin-react-svg",
+  "version": "0.0.0",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "types": "./src/main.ts",
+  "main": "./dist/main.js",
+  "publishConfig": {
+    "access": "public",
+    "@hooked74:registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "build": "../../cli/cross-env NODE_ENV=production tsc"
+  },
+  "dependencies": {
+    "@svgr/core": "^6.2.1",
+    "esbuild": "^0.14.44",
+    "vite": "^2.9.12"
+  }
+}

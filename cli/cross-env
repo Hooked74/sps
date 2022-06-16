@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+require("./utils/setupEnv");
+require("cross-env")(process.argv.slice(2));

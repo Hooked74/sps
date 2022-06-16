@@ -1,0 +1,112 @@
+#!/usr/bin/env node
+// --experimental-vm-modules
+
+process.env.BABEL_ENV = "test";
+process.env.NODE_ENV = "test";
+process.env.PUBLIC_URL = "";
+
+process.on("unhandledRejection", (err) => {
+  throw err;
+});
+
+require("./utils/setupEnv");
+
+const jest = require("jest");
+const execSync = require("child_process").execSync;
+let argv = process.argv.slice(2);
+const ciIndex = argv.indexOf("--ci");
+
+function isInGitRepository() {
+  try {
+    execSync("git rev-parse --is-inside-work-tree", { stdio: "ignore" });
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function isInMercurialRepository() {
+  try {
+    execSync("hg --cwd . root", { stdio: "ignore" });
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+if (~ciIndex) process.env.CI = true;
+
+// Watch unless on CI or explicitly running all tests
+if (
+  !process.env.CI &&
+  argv.indexOf("--watchAll") === -1 &&
+  argv.indexOf("--watchAll=false") === -1
+) {
+  const hasSourceControl = isInGitRepository() || isInMercurialRepository();
+  argv.push(hasSourceControl ? "--watch" : "--watchAll");
+}
+
+const path = require("path");
+const resolve = require("resolve");
+function resolveJestDefaultEnvironment(name) {
+  const jestDir = path.dirname(
+    resolve.sync("jest", {
+      basedir: __dirname,
+    })
+  );
+  const jestCLIDir = path.dirname(
+    resolve.sync("jest-cli", {
+      basedir: jestDir,
+    })
+  );
+  const jestConfigDir = path.dirname(
+    resolve.sync("jest-config", {
+      basedir: jestCLIDir,
+    })
+  );
+  return resolve.sync(name, {
+    basedir: jestConfigDir,
+  });
+}
+
+let cleanArgv = [];
+let env = "jsdom";
+let next;
+let testDir;
+
+while (argv.length > 0) {
+  next = argv.shift();
+  if (next === "--env") {
+    env = argv.shift();
+  } else if (next.indexOf("--env=") === 0) {
+    env = next.substring("--env=".length);
+  } else if (next === "--testDir") {
+    testDir = argv.shift();
+  } else if (next.indexOf("--testDir=") === 0) {
+    testDir = next.substring("--testDir=".length);
+  } else {
+    cleanArgv.push(next);
+  }
+}
+
+argv = cleanArgv;
+let resolvedEnv;
+
+try {
+  resolvedEnv = resolveJestDefaultEnvironment(`jest-environment-${env}`);
+} catch (e) {
+  // ignore
+}
+if (!resolvedEnv) {
+  try {
+    resolvedEnv = resolveJestDefaultEnvironment(env);
+  } catch (e) {
+    // ignore
+  }
+}
+
+const testEnvironment = resolvedEnv || env;
+argv.push("--env", testEnvironment);
+argv.push("--config", JSON.stringify(require("../jest.config")(testDir)));
+// @remove-on-eject-end
+jest.run(argv);

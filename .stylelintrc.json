@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["tailwind", "apply", "variants", "responsive", "screen", "layer"]
+      }
+    ],
+    "declaration-block-trailing-semicolon": null,
+    "declaration-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "block-no-empty": null,
+    "no-empty-source": null,
+    "selector-pseudo-class-no-unknown": null,
+    "no-descending-specificity": null,
+    "length-zero-no-unit": null,
+    "no-invalid-position-at-import-rule": null,
+    "no-irregular-whitespace": null,
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["composes", "compose-with"],
+        "ignoreSelectors": [":export", "/^:import/"]
+      }
+    ],
+    "value-keyword-case": [
+      "lower",
+      {
+        "ignoreProperties": ["composes", "compose-with"]
+      }
+    ]
+  },
+  "ignoreFiles": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+}
