@@ -19,7 +19,7 @@
     "test:inspect": "npm --node-options=--inspect-brk run test:heap",
     "test:package": "lerna exec --scope=@h74-sps/$npm_config_package -- npm run test -- $npm_config_args",
     "build": "./cli/cross-env NODE_ENV=production concurrently --kill-others-on-fail -r \"npm run lint:types\" \"npm run lint:scripts\" \"npm run lint:styles\" \"npm run build:all:async\" | gnomon --medium=1.0 --high=5.0 --real-time=false; [ \"${PIPESTATUS[0]}\" -ne \"0\" ] && exit ${PIPESTATUS[0]} || echo \"\"",
-    "build:since": "./cli/cross-env NODE_ENV=production [ $(npx lerna changed --loglevel silent) ] && concurrently --kill-others-on-fail -r \"npm run lint:types\" \"npm run lint:scripts\" \"npm run lint:styles\" \"npm run build:all:async:since\" || echo \"No changed packages found\" | gnomon --medium=1.0 --high=5.0 --real-time=false; [ \"${PIPESTATUS[0]}\" -ne \"0\" ] && exit ${PIPESTATUS[0]} || echo \"\"",
+    "build:since": "./cli/cross-env NODE_ENV=production [ $(npx lerna changed --loglevel silent) ] && concurrently --kill-others-on-fail -r \"npm run lint:types\" \"npm run lint:scripts\" \"npm run lint:styles\" \"npm run build:all:async:since\" || echo \"No changed packages found\" | gnomon --medium=1.0 --high=5.0 --real-time=false; [ ${PIPESTATUS[0]} -ne 0 ] && exit 1 || echo \"\"",
     "build:watch": "lerna run build:watch --parallel",
     "build:all": "lerna run build --stream",
     "build:all:async:since": "npm run build:vite:async:since && npm run build:packages:async:since",
