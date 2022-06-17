@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  CI: true
+
 permissions:
   contents: write
   packages: write
@@ -31,20 +34,24 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           scope: "@h74-sps"
 
+      - name: Install Dependencies
+        run: |
+          npm ci --cache $(npm config get cache) --prefer-offline
+
+      - name: Bootstrap Lerna Dependecies
+        run: |
+          npm run deps:packages:bootstrap:since
+
+      - name: Build App
+        run: |
+          npm run build
+
       - name: Git Identity
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
 
-      - name: Install
-        run: |
-          npm run deps:install
-
-      - name: Build
-        run: |
-          npm run build
-
-      - name: "Version and publish"
+      - name: "Version And Publish"
         run: |
           npx lerna version --conventional-commits --changelog-preset angular --no-commit-hooks --yes
           npx lerna publish from-git --yes
