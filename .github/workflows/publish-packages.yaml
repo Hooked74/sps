@@ -43,7 +43,7 @@ jobs:
 
       - name: Build App
         run: |
-          npm run build
+          npm run build:since
 
       - name: Git Identity
         run: |
