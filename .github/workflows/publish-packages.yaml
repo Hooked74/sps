@@ -25,11 +25,11 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GH_PAT }}
 
-      - name: Setup Node ${{ NODE_VERSION }}
+      - name: Setup Node ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: ${{ NODE_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
           registry-url: "https://registry.npmjs.org"
           scope: "@h74-sps"
 
