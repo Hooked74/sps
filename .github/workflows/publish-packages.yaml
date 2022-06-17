@@ -16,9 +16,8 @@ jobs:
   publish:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [18]
+    env:
+      NODE_VERSION: 18
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -26,11 +25,11 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GH_PAT }}
 
-      - name: Setup Node ${{ matrix.node }}
+      - name: Setup Node ${{ NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: ${{ matrix.node }}
+          node-version: ${{ NODE_VERSION }}
           registry-url: "https://registry.npmjs.org"
           scope: "@h74-sps"
 
