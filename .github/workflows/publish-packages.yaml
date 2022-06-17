@@ -35,8 +35,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm ci --cache $(npm config get cache) --prefer-offline
-
+          npm ci
+      #npm ci --cache $(npm config get cache) --prefer-offline
       - name: Bootstrap Lerna Dependecies
         run: |
           npm run deps:packages:bootstrap:since
