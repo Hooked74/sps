@@ -60,6 +60,7 @@ jobs:
           fi
 
           echo "Fix/actions" | grep -Eo '\[[a-z]+\]' || true;
+          echo "ololo";
           L=$(echo "Fix/actions" | { grep -Eo '\[[a-z]+\]' || true; });
           echo $L;
           B=$(echo $L | grep -Eo 'minor|major');
