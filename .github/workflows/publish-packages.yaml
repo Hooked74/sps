@@ -33,6 +33,10 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           scope: "@h74-sps"
 
+      - name: Log
+        run: |
+          echo {{ toJSON(github) }}
+
       - name: Install Dependencies
         run: |
           npm ci --cache $(npm config get cache) --prefer-offline
