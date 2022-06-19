@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_VERSION: 18
-      LERNA_VERSION_TYPE: $(echo "Fix/actions" | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major' || echo patch)
+      LERNA_UPPER_VERSION_TYPE: $(echo "Fix/actions" | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major')
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -53,7 +53,10 @@ jobs:
 
       - name: "Version And Publish"
         run: |
-          echo ${{ env.LERNA_VERSION_TYPE }}
+          LERNA_VERSION_TYPE=${{ env.LERNA_UPPER_VERSION_TYPE }}
+          if [ -z $LERNA_VERSION_TYPE ]; then
+             LERNA_VERSION_TYPE=patch
+          fi;
 
           npx lerna version $LERNA_VERSION_TYPE --conventional-commits --changelog-preset angular --no-commit-hooks -m "chore(release): publish %s" --create-release github --yes
           npx lerna publish from-git --yes
