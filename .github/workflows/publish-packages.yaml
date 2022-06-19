@@ -53,7 +53,7 @@ jobs:
 
       - name: "Version And Publish"
         run: |
-          L=$(echo "Fix/actions[minor]" | grep -Eo '\[[a-z]+\]');
+          L=$(echo "Fix/actions" | grep -Po '\[[a-z]+\]');
           echo $L;
           B=$(echo $L | grep -Eo 'minor|major');
           echo $B;
