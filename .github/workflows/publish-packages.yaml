@@ -18,8 +18,19 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_VERSION: 18
-      LERNA_UPPER_VERSION_TYPE: $(echo "Fix/actions" | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major' || true)
+      LERNA_UPPER_VERSION_TYPE: $(echo ${{ github.event.pull_request.title }} | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major' || true)
     steps:
+      - name: Test
+        run: |
+          if [ ! -z ${{ env.LERNA_UPPER_VERSION_TYPE }} ]; then
+            echo 123
+          else
+            echo 321
+          fi
+
+      - name: Log
+        run: |
+          echo ${{ toJSON(github) }}
       # - name: Checkout
       #   uses: actions/checkout@v3
       #   with:
@@ -54,22 +65,12 @@ jobs:
       - name: "Version And Publish"
         run: |
           LERNA_VERSION_TYPE=${{ env.LERNA_UPPER_VERSION_TYPE }}
-          echo $LERNA_VERSION_TYPE;
-          echo "npx lerna version"
-
           if [ -z $LERNA_VERSION_TYPE ]; then
             LERNA_VERSION_TYPE=patch
           fi;
-          echo $LERNA_VERSION_TYPE;
-
-
-          exit 1;
 
           npx lerna version $LERNA_VERSION_TYPE --conventional-commits --changelog-preset angular --no-commit-hooks -m "chore(release): publish %s" --create-release github --yes
           npx lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-# if [ -z $LERNA_VERSION_TYPE ]; then
-#     LERNA_VERSION_TYPE=patch
-# fi;
