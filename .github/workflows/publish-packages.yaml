@@ -53,6 +53,7 @@ jobs:
 
       - name: "Version And Publish"
         run: |
+          echo "foo" | grep "bar" || true
           echo "Fix/actions" | grep -Eo '\[[a-z]+\]' || true;
           L=$(echo "Fix/actions" | { grep -Eo '\[[a-z]+\]' || true; });
           echo $L;
