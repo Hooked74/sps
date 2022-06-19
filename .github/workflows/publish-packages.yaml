@@ -53,11 +53,8 @@ jobs:
 
       - name: "Version And Publish"
         run: |
-          L=$(echo "Fix/actions" | grep -Eo '\[[a-z]+\]' || true);
+          L=$(echo "Fix/actions" | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major' || true);
           echo $L;
-          echo "npx lerna version"
-          B=$(echo $L | grep -Eo 'minor|major' || true);
-          echo $B;
           echo "npx lerna version"
           LERNA_VERSION_TYPE=${{ env.LERNA_UPPER_VERSION_TYPE }}
 
