@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_VERSION: 18
-      LERNA_UPPER_VERSION_TYPE: $(echo "Fix/actions" | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major')
+      LERNA_UPPER_VERSION_TYPE: $(echo "Fix/actions" | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major' || true)
     steps:
       # - name: Checkout
       #   uses: actions/checkout@v3
@@ -53,11 +53,14 @@ jobs:
 
       - name: "Version And Publish"
         run: |
-          L=$(echo "Fix/actions" | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major' || true);
-          echo $L;
-          echo "npx lerna version"
           LERNA_VERSION_TYPE=${{ env.LERNA_UPPER_VERSION_TYPE }}
+          echo $LERNA_VERSION_TYPE;
+          echo "npx lerna version"
 
+          if [ -z $LERNA_VERSION_TYPE ]; then
+            LERNA_VERSION_TYPE=patch
+          fi;
+          echo $LERNA_VERSION_TYPE;
 
 
           exit 1;
