@@ -58,6 +58,8 @@ jobs:
              LERNA_VERSION_TYPE=patch
           fi;
 
+          echo "npx lerna version $LERNA_VERSION_TYPE --conventional-commits --changelog-preset angular --no-commit-hooks -m "chore(release): publish %s" --create-release github --yes"
+
           npx lerna version $LERNA_VERSION_TYPE --conventional-commits --changelog-preset angular --no-commit-hooks -m "chore(release): publish %s" --create-release github --yes
           npx lerna publish from-git --yes
         env:
