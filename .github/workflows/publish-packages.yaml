@@ -35,7 +35,7 @@ jobs:
 
       - name: Log
         run: |
-          echo {{ toJSON(github) }}
+          echo ${{ toJSON(github) }}
 
       - name: Install Dependencies
         run: |
