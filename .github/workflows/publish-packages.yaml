@@ -52,7 +52,7 @@ jobs:
 
       - name: "Version And Publish"
         run: |
-          LERNA_VERSION_TYPE=$(echo ${{ github.event.pull_request.title }} | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major');
+          LERNA_VERSION_TYPE=$(echo "${{ github.event.pull_request.title }}" | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major');
 
           if [ -z $LERNA_VERSION_TYPE ]; then
             LERNA_VERSION_TYPE="patch"
