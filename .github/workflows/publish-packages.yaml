@@ -55,7 +55,7 @@ jobs:
           LERNA_VERSION_TYPE=$(echo "${{ github.event.pull_request.title }}" | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major');
 
           if [ -z $LERNA_VERSION_TYPE ]; then
-            LERNA_VERSION_TYPE="patch"
+            LERNA_VERSION_TYPE=patch
           fi;
 
           npx lerna version $LERNA_VERSION_TYPE --conventional-commits --changelog-preset angular --no-commit-hooks --yes
