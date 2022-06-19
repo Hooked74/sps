@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/hooked74/sps/compare/v0.1.13...v0.2.0) (2022-06-19)
+
+
+### Bug Fixes
+
+* update publish-packages.yaml ([8fc4887](https://github.com/hooked74/sps/commit/8fc48872efa3b302337e55606bd669361c763e3b))
+* update publish-packages.yaml ([20ace44](https://github.com/hooked74/sps/commit/20ace44111becd73bcdb6a819f93a302498e9021))
+* update publish-packages.yaml ([4752e3e](https://github.com/hooked74/sps/commit/4752e3eec98202d485f5ea944a19cf2c1896cd8e))
+* update publish-packages.yaml ([668e59a](https://github.com/hooked74/sps/commit/668e59a145b2ab9661a98eabf78d5c95b32b2037))
+* update publish-packages.yaml ([cb7cbd0](https://github.com/hooked74/sps/commit/cb7cbd0d9bda26dd54f543caccb0895e40f62abf))
+* update publish-packages.yaml ([d5c514f](https://github.com/hooked74/sps/commit/d5c514f1a9d8e9b689f6fa121510514401161440))
+* update publish-packages.yaml ([9a4cf21](https://github.com/hooked74/sps/commit/9a4cf214da9b82fb23c5c48cf9575b222c7b234c))
+* update publish-packages.yaml ([01ed76d](https://github.com/hooked74/sps/commit/01ed76d3408200c991d5a89849cc4e6645170bdd))
+* update publish-packages.yaml ([5f6607e](https://github.com/hooked74/sps/commit/5f6607e4402900fa67e9bc419bb5850c293cd0f6))
+* update publish-packages.yaml ([b26472a](https://github.com/hooked74/sps/commit/b26472a82053523ade2a9e8616674dc19af5b207))
+* update publish-packages.yaml ([7c08fcb](https://github.com/hooked74/sps/commit/7c08fcb8bf1cae7a6e70c41e51c76aff30de8b08))
+* update publish-packages.yaml ([f578781](https://github.com/hooked74/sps/commit/f5787810dbe3367de9026fb746ed59ab04cd4158))
+* update publish-packages.yaml ([c4caf40](https://github.com/hooked74/sps/commit/c4caf409c5c47b46d91ec31e6df26ea5e82c59c3))
+* update publish-packages.yaml ([8f60e15](https://github.com/hooked74/sps/commit/8f60e15f42aa634bcda317b2c7247a6d474da52f))
+* update publish-packages.yaml ([a2882c8](https://github.com/hooked74/sps/commit/a2882c86f65789dd144e61538d251ca755481e16))
+* update publish-packages.yaml ([af253c2](https://github.com/hooked74/sps/commit/af253c271f74e68ccaa10ca7ece0c2613429c2e5))
+* update publish-packages.yaml ([9909487](https://github.com/hooked74/sps/commit/9909487f0489b39a300bc83337dac758529addf0))
+* update publish-packages.yaml ([5b207e1](https://github.com/hooked74/sps/commit/5b207e12229ab4bfe0f986f8719b95e09246f666))
+* update publish-packages.yaml ([95884f2](https://github.com/hooked74/sps/commit/95884f262ec2560594f2f2b261aec88cd3be9b05))
+
+
+
+
+
 ## [0.1.13](https://github.com/hooked74/sps/compare/v0.1.12...v0.1.13) (2022-06-16)
 
 
