@@ -53,10 +53,11 @@ jobs:
 
       - name: "Version And Publish"
         run: |
+          echo "npx lerna version"
           LERNA_VERSION_TYPE=${{ env.LERNA_UPPER_VERSION_TYPE }}
 
 
-          echo "npx lerna version $LERNA_VERSION_TYPE"
+          echo "npx lerna version"
 
           exit 1;
 
