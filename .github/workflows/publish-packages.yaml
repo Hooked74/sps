@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_VERSION: 18
-      LERNA_UPPER_VERSION_TYPE: $(echo ${{ github.event.pull_request.title }} | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major' || true)
+      LERNA_UPPER_VERSION_TYPE: $(echo "${{ github.event.pull_request.title }}" | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major' || true)
     steps:
       - name: Checkout
         uses: actions/checkout@v3
