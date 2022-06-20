@@ -1,0 +1,14 @@
+import { moveArrayItem } from "../moveArrayItem";
+import { expect } from "@jest/globals";
+
+describe("utils/helpers/moveArrayItem", () => {
+  it("Должен вернуть [Саша, Маша, Даша, Сергей, Игнат]", () => {
+    const mockArray = ["Даша", "Саша", "Маша", "Сергей", "Игнат"];
+    expect(moveArrayItem(mockArray, 0, 2)).toEqual(["Саша", "Маша", "Даша", "Сергей", "Игнат"]);
+  });
+
+  it("Должен вернуть [45, 842, 18, 33]", () => {
+    const mockArray = [45, 33, 842, 18];
+    expect(moveArrayItem(mockArray, 1, 4)).toEqual([45, 842, 18, 33]);
+  });
+});

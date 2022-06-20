@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@svgr/core": "^6.2.1",
-    "esbuild": "^0.14.44",
+    "esbuild": "^0.14.46",
     "vite": "^2.9.12"
   },
   "repository": "https://github.com/hooked74/sps.git",
