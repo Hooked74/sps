@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/hooked74/sps/compare/v0.2.0...v0.2.1) (2022-06-20)
+
+
+### Bug Fixes
+
+* update publish-packages.yaml ([ed40dd3](https://github.com/hooked74/sps/commit/ed40dd33bf43b6422805fd3dce640c06a180c5dd))
+* update publish-packages.yaml ([2f8b689](https://github.com/hooked74/sps/commit/2f8b6895d1de93d406aa93d2c812011a2333e10f))
+* update publish-packages.yaml ([5ace10a](https://github.com/hooked74/sps/commit/5ace10ae26cdec9f69a736a662acd50b7a792e3d))
+* update publish-packages.yaml ([9b3f375](https://github.com/hooked74/sps/commit/9b3f375590f0a3ae54a349277a6d946dc50ca82d))
+* update publish-packages.yaml ([f4ec2c7](https://github.com/hooked74/sps/commit/f4ec2c7bdc741bb79d8967c5da9ddce39953fc1d))
+* update publish-packages.yaml ([d50cba4](https://github.com/hooked74/sps/commit/d50cba4f5bc13856f2b0893842ea220fff22f18f))
+* update publish-packages.yaml ([99b49c7](https://github.com/hooked74/sps/commit/99b49c74b071bd901c2422df93c68eb02e2337d7))
+* update publish-packages.yaml ([abf2d4f](https://github.com/hooked74/sps/commit/abf2d4f4971e337a342aa2054bdb6f9090c21d08))
+* update publish-packages.yaml ([4c6a37c](https://github.com/hooked74/sps/commit/4c6a37c7fe8a00181f43c8905f30c3de11c77034))
+* update publish-packages.yaml ([a607e16](https://github.com/hooked74/sps/commit/a607e161274e5bb0a2638e0d922b88ef2e9d1c98))
+* update publish-packages.yaml ([670736a](https://github.com/hooked74/sps/commit/670736a7369d1e4adae7c912b2906e29e18ab062))
+* update publish-packages.yaml ([4e3a6fd](https://github.com/hooked74/sps/commit/4e3a6fd7f0fb5c0039728fbd128237a1c8d975db))
+* update publish-packages.yaml ([068a310](https://github.com/hooked74/sps/commit/068a31032cb2e009855435f82eac0edd2ebcab7d))
+* update publish-packages.yaml ([dfccfa8](https://github.com/hooked74/sps/commit/dfccfa84286ad80d058403f04c2a6cfdd2e4cf51))
+* update publish-packages.yaml ([a2d3301](https://github.com/hooked74/sps/commit/a2d3301a02023177320e41fbd2a27c86537586da))
+* update publish-packages.yaml ([f071a5f](https://github.com/hooked74/sps/commit/f071a5f2ede3a6f32444b180de3c98fd870eb785))
+* update publish-packages.yaml ([295e61f](https://github.com/hooked74/sps/commit/295e61fccae0195ad46ca66e029e4e5720455c77))
+* update publish-packages.yaml ([9a57e70](https://github.com/hooked74/sps/commit/9a57e7033e547b95857b57354c42305b44baed32))
+* update publish-packages.yaml ([3a19677](https://github.com/hooked74/sps/commit/3a19677ee25bde357bf8ff13ebfbb2b8d8497078))
+* update publish-packages.yaml ([400f0a4](https://github.com/hooked74/sps/commit/400f0a4bf662c36ceacd19af3aa507972a2b8c41))
+* update publish-packages.yaml ([fcfde14](https://github.com/hooked74/sps/commit/fcfde1497c93e732124fec4d4689ca28218e984f))
+* update publish-packages.yaml ([44997e7](https://github.com/hooked74/sps/commit/44997e74b5c1efa543e9b966668c7374555b65f0))
+* update publish-packages.yaml ([2b3f2d4](https://github.com/hooked74/sps/commit/2b3f2d4aaa71d247ffc7fe54ffd560164328125d))
+* update publish-packages.yaml ([4e63611](https://github.com/hooked74/sps/commit/4e63611a3fbf01c6e954cdc35c8268001328b17d))
+* update publish-packages.yaml ([9b11198](https://github.com/hooked74/sps/commit/9b11198af8c18a8ccdf47879f67bd087d5b92abd))
+* update publish-packages.yaml ([2e1ca4e](https://github.com/hooked74/sps/commit/2e1ca4ec7d6d56ce648a9f18888d4be60f358473))
+* update publish-packages.yaml ([321b04e](https://github.com/hooked74/sps/commit/321b04ee3bf81fa91fc2641b725bc42afeb7bb53))
+* update publish-packages.yaml ([69bf49c](https://github.com/hooked74/sps/commit/69bf49c0db2806f7b2948e1bbc139ad3eb5242b0))
+* update publish-packages.yaml ([ee19969](https://github.com/hooked74/sps/commit/ee1996980938c276b2fd88ac343fed28822833d8))
+* update publish-packages.yaml ([67d3857](https://github.com/hooked74/sps/commit/67d38579f35717a9bf5a179752a716e888a6a1fe))
+
+
+
+
+
 # [0.2.0](https://github.com/hooked74/sps/compare/v0.1.13...v0.2.0) (2022-06-19)
 
 
