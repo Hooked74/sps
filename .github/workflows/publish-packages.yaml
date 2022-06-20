@@ -20,47 +20,44 @@ jobs:
       NODE_VERSION: 18
       LERNA_UPPER_VERSION_TYPE: $(echo ${{ github.event.pull_request.title }} | grep -Eo '\[[a-z]+\]' | grep -Eo 'minor|major' || true)
     steps:
-      - name: Test
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: "https://registry.npmjs.org"
+          scope: "@h74-sps"
+
+      - name: Install Dependencies
+        run: |
+          npm ci --cache $(npm config get cache) --prefer-offline
+
+      - name: Bootstrap Lerna Dependecies
         run: |
           if [ ! -z ${{ env.LERNA_UPPER_VERSION_TYPE }} ]; then
-            echo 123
+            npm run deps:packages:bootstrap
           else
-            echo 321
+            npm run deps:packages:bootstrap:since
           fi
 
-      - name: Log
+      - name: Build App
         run: |
-          echo ${{ toJSON(github) }}
-      # - name: Checkout
-      #   uses: actions/checkout@v3
-      #   with:
-      #     fetch-depth: 0
-      #     token: ${{ secrets.GH_PAT }}
+          if [ ! -z ${{ env.LERNA_UPPER_VERSION_TYPE }} ]; then
+            npm run build
+          else
+            npm run build:since
+          fi
 
-      # - name: Setup Node ${{ env.NODE_VERSION }}
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     cache: npm
-      #     node-version: ${{ env.NODE_VERSION }}
-      #     registry-url: "https://registry.npmjs.org"
-      #     scope: "@h74-sps"
-
-      # - name: Install Dependencies
-      #   run: |
-      #     npm ci --cache $(npm config get cache) --prefer-offline
-
-      # - name: Bootstrap Lerna Dependecies
-      #   run: |
-      #     npm run deps:packages:bootstrap:since
-
-      # - name: Build App
-      #   run: |
-      #     npm run build:since
-
-      # - name: Git Identity
-      #   run: |
-      #     git config user.name "${{ github.actor }}"
-      #     git config user.email "${{ github.actor}}@users.noreply.github.com"
+      - name: Git Identity
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
 
       - name: "Version And Publish"
         run: |
@@ -69,7 +66,7 @@ jobs:
             LERNA_VERSION_TYPE=patch
           fi;
 
-          npx lerna version $LERNA_VERSION_TYPE --conventional-commits --changelog-preset angular --no-commit-hooks -m "chore(release): publish %s" --create-release github --yes
+          npx lerna version $LERNA_VERSION_TYPE --conventional-commits --changelog-preset angular --no-commit-hooks -m "chore(#${{ github.event.number }}): publish %s" --create-release github --yes
           npx lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
