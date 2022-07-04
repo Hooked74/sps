@@ -11,6 +11,8 @@ env:
 permissions:
   contents: write
   packages: write
+  checks: write
+  pull-requests: write
 
 jobs:
   test:
@@ -47,3 +49,10 @@ jobs:
       - name: Test Packages
         run: |
           npm run test:ci:coverage
+
+      - name: Publish Jest Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.39
+        with:
+          files: coverage/*.xml
+          check_name: Jest Results
+          comment_title: Jest Results
