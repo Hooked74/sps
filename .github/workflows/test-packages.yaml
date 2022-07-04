@@ -48,7 +48,7 @@ jobs:
 
       - name: Test Packages
         run: |
-          npm run test:ci:coverage
+          npm run test:ci:report
 
       - name: Publish Jest Results
         uses: ArtiomTr/jest-coverage-report-action@v2
