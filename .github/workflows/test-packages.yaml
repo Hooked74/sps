@@ -30,13 +30,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           cache: npm
+          cache-dependency-path: package-lock.json
           node-version: ${{ env.NODE_VERSION }}
           registry-url: "https://registry.npmjs.org"
           scope: "@h74-sps"
 
       - name: Install Dependencies
         run: |
-          npm ci --cache $(npm config get cache) --prefer-offline
+          npm ci
 
       - name: Bootstrap Lerna Dependecies
         run: |
