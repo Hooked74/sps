@@ -51,8 +51,6 @@ jobs:
           npm run test:ci:coverage
 
       - name: Publish Jest Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.39
+        uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-          files: coverage/*.xml
-          check_name: Jest Results
-          comment_title: Jest Results
+          coverage-file: ./coverage/report.json
