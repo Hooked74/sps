@@ -46,7 +46,7 @@ jobs:
             npm run deps:packages:bootstrap:since
           fi
 
-      - name: Build App
+      - name: Build Packages
         run: |
           if [ ! -z ${{ env.LERNA_UPPER_VERSION_TYPE }} ]; then
             npm run build

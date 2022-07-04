@@ -1,0 +1,49 @@
+name: Test Packages
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+env:
+  CI: true
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: 18
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: "https://registry.npmjs.org"
+          scope: "@h74-sps"
+
+      - name: Install Dependencies
+        run: |
+          npm ci --cache $(npm config get cache) --prefer-offline
+
+      - name: Bootstrap Lerna Dependecies
+        run: |
+          npm run deps:packages:bootstrap
+
+      - name: Build Packages
+        run: |
+          npm run build
+
+      - name: Test Packages
+        run: |
+          npm run test:ci:coverage
