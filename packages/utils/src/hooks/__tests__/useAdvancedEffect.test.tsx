@@ -1,6 +1,5 @@
 import { useAdvancedEffect } from "../useAdvancedEffect";
 import { useState } from "react";
-import { expect } from "@jest/globals";
 
 describe("utils/hooks/useAdvancedEffect", () => {
   it("Должен вызвать callback в useEffect", () => {
@@ -8,15 +7,15 @@ describe("utils/hooks/useAdvancedEffect", () => {
 
     const { rerender, result } = renderHook(() => useAdvancedEffect(callback, []));
 
-    expect(callback).toHaveBeenCalledTimes(1);
-    expect(result.current.isMountRef.current).toBe(true);
-    expect(result.current.isUpdateRef.current).toBe(false);
-    expect(result.current.isOnceCall.current).toBe(true);
+    expectJest(callback).toHaveBeenCalledTimes(1);
+    expectJest(result.current.isMountRef.current).toBe(true);
+    expectJest(result.current.isUpdateRef.current).toBe(false);
+    expectJest(result.current.isOnceCall.current).toBe(true);
 
     rerender();
 
-    expect(callback).toHaveBeenCalledTimes(1);
-    expect(result.current.isUpdateRef.current).toBe(false);
+    expectJest(callback).toHaveBeenCalledTimes(1);
+    expectJest(result.current.isUpdateRef.current).toBe(false);
   });
 
   it("Должен вызвать callback при маунте и каждом ререндере", () => {
@@ -24,19 +23,19 @@ describe("utils/hooks/useAdvancedEffect", () => {
 
     const { rerender, result } = renderHook(() => useAdvancedEffect(callback));
 
-    expect(callback).toHaveBeenCalledTimes(1);
-    expect(result.current.isMountRef.current).toBe(true);
-    expect(result.current.isUpdateRef.current).toBe(false);
-    expect(result.current.isOnceCall.current).toBe(true);
+    expectJest(callback).toHaveBeenCalledTimes(1);
+    expectJest(result.current.isMountRef.current).toBe(true);
+    expectJest(result.current.isUpdateRef.current).toBe(false);
+    expectJest(result.current.isOnceCall.current).toBe(true);
 
     rerender();
 
-    expect(callback).toHaveBeenCalledTimes(2);
-    expect(result.current.isUpdateRef.current).toBe(true);
+    expectJest(callback).toHaveBeenCalledTimes(2);
+    expectJest(result.current.isUpdateRef.current).toBe(true);
 
     rerender();
 
-    expect(callback).toHaveBeenCalledTimes(3);
+    expectJest(callback).toHaveBeenCalledTimes(3);
   });
 
   it("Должен вызвать callback 1 раз при маунте", () => {
@@ -44,11 +43,11 @@ describe("utils/hooks/useAdvancedEffect", () => {
 
     const { rerender } = renderHook(() => useAdvancedEffect(callback, undefined, { once: true }));
 
-    expect(callback).toHaveBeenCalledTimes(1);
+    expectJest(callback).toHaveBeenCalledTimes(1);
 
     rerender();
 
-    expect(callback).toHaveBeenCalledTimes(1);
+    expectJest(callback).toHaveBeenCalledTimes(1);
   });
 
   it("Должен вызывать callback на didUpdate", () => {
@@ -61,13 +60,13 @@ describe("utils/hooks/useAdvancedEffect", () => {
       return { setMock };
     });
 
-    expect(callback).toHaveBeenCalledTimes(0);
+    expectJest(callback).toHaveBeenCalledTimes(0);
 
     act(() => {
       result.current.setMock(Math.random());
     });
 
-    expect(callback).toHaveBeenCalledTimes(1);
+    expectJest(callback).toHaveBeenCalledTimes(1);
   });
 
   it("Должен вызывать callback на didUpdate 1 раз", () => {
@@ -77,15 +76,15 @@ describe("utils/hooks/useAdvancedEffect", () => {
       useAdvancedEffect(callback, undefined, { didUpdate: true, once: true })
     );
 
-    expect(callback).toHaveBeenCalledTimes(0);
+    expectJest(callback).toHaveBeenCalledTimes(0);
 
     rerender();
 
-    expect(callback).toHaveBeenCalledTimes(1);
+    expectJest(callback).toHaveBeenCalledTimes(1);
 
     rerender();
 
-    expect(callback).toHaveBeenCalledTimes(1);
+    expectJest(callback).toHaveBeenCalledTimes(1);
   });
 
   it("Должен вызывать callback при unmount", () => {
@@ -97,9 +96,9 @@ describe("utils/hooks/useAdvancedEffect", () => {
 
     unmount();
 
-    expect(unmountCallback).toHaveBeenCalledTimes(1);
-    expect(result.current.isMountRef.current).toBe(false);
-    expect(result.current.isUpdateRef.current).toBe(false);
-    expect(result.current.isOnceCall.current).toBe(false);
+    expectJest(unmountCallback).toHaveBeenCalledTimes(1);
+    expectJest(result.current.isMountRef.current).toBe(false);
+    expectJest(result.current.isUpdateRef.current).toBe(false);
+    expectJest(result.current.isOnceCall.current).toBe(false);
   });
 });

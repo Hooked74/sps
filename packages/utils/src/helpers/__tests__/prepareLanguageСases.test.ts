@@ -1,5 +1,4 @@
 import { GenderTypes, PluralAccusativeCaseTypes } from "../../constants";
-import { expect } from "@jest/globals";
 import {
   prepareLanguageСasesOfOne,
   prepareLanguageСases,
@@ -14,7 +13,7 @@ describe("utils/helpers/prepareLanguageСases", () => {
   it("Должен вернуть объект с падежами", () => {
     const [nominative, genitive, dative, accusative, ablative, prepositional] = mockSingleArray;
 
-    expect(
+    expectJest(
       prepareLanguageСasesOfOne(
         ...(mockSingleArray as Parameters<typeof prepareLanguageСasesOfOne>)
       )
@@ -24,7 +23,7 @@ describe("utils/helpers/prepareLanguageСases", () => {
   it("Должен вернуть расширенный объект с падежами", () => {
     const [nominative, genitive, dative, accusative, ablative, prepositional] = mockSingleArray;
 
-    expect(
+    expectJest(
       prepareLanguageСases(
         prepareLanguageСasesOfOne(
           ...(mockSingleArray as Parameters<typeof prepareLanguageСasesOfOne>)
@@ -46,7 +45,7 @@ describe("utils/helpers/prepareLanguageСases", () => {
   it("Должен вернуть должен соединить два объекта с падежами", () => {
     const [nominative, genitive, dative, accusative, ablative, prepositional] = mockSingleArray;
 
-    expect(
+    expectJest(
       concatTwoLanguageСasesOfOne(
         prepareLanguageСasesOfOne(
           ...(mockSingleArray as Parameters<typeof prepareLanguageСasesOfOne>)
@@ -68,7 +67,7 @@ describe("utils/helpers/prepareLanguageСases", () => {
   it("Должен вернуть должен соединить два объекта с падежами", () => {
     const [nominative, genitive, dative, accusative, ablative, prepositional] = mockSingleArray;
 
-    expect(
+    expectJest(
       concatTwoLanguageСasesOfOne(
         prepareLanguageСasesOfOne(
           ...(mockSingleArray as Parameters<typeof prepareLanguageСasesOfOne>)
@@ -90,7 +89,7 @@ describe("utils/helpers/prepareLanguageСases", () => {
   it("Должен вернуть должен соединить два расширенных объекта с падежами", () => {
     const [nominative, genitive, dative, accusative, ablative, prepositional] = mockSingleArray;
 
-    expect(
+    expectJest(
       composeLanguageCases(
         [
           prepareLanguageСases(

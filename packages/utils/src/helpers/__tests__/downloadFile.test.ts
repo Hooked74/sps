@@ -2,7 +2,6 @@ import { AxiosResponse } from "axios";
 import { downloadFile } from "../downloadFile";
 import { saveAs } from "file-saver";
 import { v4 } from "uuid";
-import { expect } from "@jest/globals";
 
 const uuidv4ReturnValue = "mock-uuid-v4";
 
@@ -25,7 +24,7 @@ describe("utils/helpers/downloadFile", () => {
       } as Dictionary<string>,
     } as AxiosResponse);
 
-    expect(saveAs).toHaveBeenCalledWith(data, fileName);
+    expectJest(saveAs).toHaveBeenCalledWith(data, fileName);
   });
 
   it("Должен получить имя файла из uuidv4", () => {
@@ -33,7 +32,7 @@ describe("utils/helpers/downloadFile", () => {
 
     downloadFile({ data, headers: {} } as AxiosResponse);
 
-    expect(v4).toHaveBeenCalled();
-    expect(saveAs).toHaveBeenCalledWith(data, uuidv4ReturnValue);
+    expectJest(v4).toHaveBeenCalled();
+    expectJest(saveAs).toHaveBeenCalledWith(data, uuidv4ReturnValue);
   });
 });

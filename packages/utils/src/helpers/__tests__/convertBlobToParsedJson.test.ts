@@ -1,5 +1,4 @@
 import { convertBlobToParsedJson } from "../convertBlobToParsedJson";
-import { expect } from "@jest/globals";
 
 describe("utils/helpers/convertBlobToParsedJson", () => {
   it("Должен получить JSON объект из Blob", async () => {
@@ -8,6 +7,6 @@ describe("utils/helpers/convertBlobToParsedJson", () => {
 
     const convertedObject = await convertBlobToParsedJson(blob);
 
-    expect(convertedObject).toEqual(mockObject);
+    expectJest(convertedObject).toEqual(mockObject);
   });
 });

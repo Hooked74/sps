@@ -1,5 +1,4 @@
 import { sleep } from "../sleep";
-import { expect } from "@jest/globals";
 
 type TimeoutMock = jest.MockedFunction<typeof setTimeout>;
 
@@ -11,8 +10,8 @@ describe("utils/helpers/sleep", () => {
     (global.setTimeout as TimeoutMock).mockImplementation((resolve: Handler) => resolve());
     await sleep(duration);
 
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), duration);
+    expectJest(setTimeout).toHaveBeenCalledTimes(1);
+    expectJest(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), duration);
     (global.setTimeout as TimeoutMock).mockRestore();
   });
 });

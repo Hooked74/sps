@@ -1,5 +1,4 @@
 import { GlobalManager } from "../GlobalManager";
-import { expect } from "@jest/globals";
 
 describe("utils/helpers/GlobalManager", () => {
   const mockKey = "GlobalManagerMock";
@@ -8,19 +7,19 @@ describe("utils/helpers/GlobalManager", () => {
   it("Должен изменить глобальное значение", () => {
     GlobalManager.set(mockKey, mockValue);
 
-    expect(GlobalManager.has(mockKey)).toBeTruthy();
+    expectJest(GlobalManager.has(mockKey)).toBeTruthy();
   });
 
   it("Должен получить глобальное значение", () => {
-    expect(GlobalManager.get(mockKey)).toEqual(mockValue);
+    expectJest(GlobalManager.get(mockKey)).toEqual(mockValue);
   });
 
   it("Должен определить, что среда выполнения является сервером", () => {
     const windowSpy = jest.spyOn(window, "window", "get");
     windowSpy.mockImplementation(() => undefined);
 
-    expect(GlobalManager.isClient()).toBeFalsy();
-    expect(GlobalManager.isServer()).toBeTruthy();
+    expectJest(GlobalManager.isClient()).toBeFalsy();
+    expectJest(GlobalManager.isServer()).toBeTruthy();
 
     windowSpy.mockRestore();
   });
@@ -29,8 +28,8 @@ describe("utils/helpers/GlobalManager", () => {
     const windowSpy = jest.spyOn(window, "window", "get");
     windowSpy.mockImplementation(() => ({} as typeof window));
 
-    expect(GlobalManager.isClient()).toBeTruthy();
-    expect(GlobalManager.isServer()).toBeFalsy();
+    expectJest(GlobalManager.isClient()).toBeTruthy();
+    expectJest(GlobalManager.isServer()).toBeFalsy();
 
     windowSpy.mockRestore();
   });

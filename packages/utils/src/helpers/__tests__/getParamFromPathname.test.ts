@@ -1,5 +1,4 @@
 import { getParamFromPathname } from "../getParamFromPathname";
-import { expect } from "@jest/globals";
 
 describe("utils/helpers/getParamFromPathname", () => {
   const { location } = window;
@@ -16,13 +15,13 @@ describe("utils/helpers/getParamFromPathname", () => {
   });
 
   it("Должен вернуть { city: 'perm', categoryAlias: 'cinema' }", () => {
-    expect(getParamFromPathname(":city/:categoryAlias")).toEqual({
+    expectJest(getParamFromPathname(":city/:categoryAlias")).toEqual({
       city: "perm",
       categoryAlias: "cinema",
     });
   });
 
   it("Должен вернуть undefined", () => {
-    expect(getParamFromPathname(":id/qwe")).toBe(undefined);
+    expectJest(getParamFromPathname(":id/qwe")).toBe(undefined);
   });
 });
