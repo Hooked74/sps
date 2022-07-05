@@ -49,10 +49,11 @@ jobs:
 
       - name: Test Packages
         run: |
-          npm run test:ci:report:gnomon
+          npm run test:ci:report
 
       - name: Publish Jest Results
         uses: ArtiomTr/jest-coverage-report-action@v2
+        if: ${{ always() }}
         with:
           coverage-file: ./coverage/report.json
           base-coverage-file: ./coverage/report.json
