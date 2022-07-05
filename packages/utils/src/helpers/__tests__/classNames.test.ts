@@ -12,7 +12,7 @@ describe("utils/helpers/classNames", () => {
         e: undefined,
         f: 1,
       })
-    ).toEqual("a f");
+    ).toEqual("a f d");
   });
 
   it("Должен проигнорировать все значения, приводящие к false", () => {
