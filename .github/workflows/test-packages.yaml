@@ -37,7 +37,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm ci
+          npm ci --cache $(npm config get cache) --prefer-offline
 
       - name: Bootstrap Lerna Dependecies
         run: |
@@ -55,3 +55,5 @@ jobs:
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
           coverage-file: ./coverage/report.json
+          base-coverage-file: ./coverage/report.json
+          skip-step: all
