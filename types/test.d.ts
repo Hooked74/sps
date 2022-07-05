@@ -36,15 +36,4 @@ declare var fakerStatic: Faker.FakerStatic;
 
 declare var userEvent: typeof import("@testing-library/user-event").default;
 
-declare namespace Cypress {
-  export interface Chainable<Subject = any> {
-    mount: typeof import("cypress/react").mount;
-    console(value: keyof Console): Chainable<Subject>;
-  }
-}
-
-declare module "expect" {
-  declare const expectExport: jest.Expect;
-
-  export = expectExport;
-}
+declare var expectJest: jest.Expect;

@@ -1,7 +1,7 @@
 /// <reference types="./types/test" />
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
+// expectJest(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom/extend-expect";
 import React, { MutableRefObject, FunctionComponent, ReactElement, createElement } from "react";
@@ -11,11 +11,13 @@ import { MessageChannel } from "worker_threads";
 import { create, ReactTestRenderer, act } from "react-test-renderer";
 import { act as actTestingLibrary } from "@testing-library/react";
 import { TextEncoder, TextDecoder } from "util";
+import { expect } from "@jest/globals";
 import "reflect-metadata";
 
 global.React = React;
 global.act = act;
 global.actTestingLibrary = actTestingLibrary;
+global.expectJest = expect as unknown as jest.Expect;
 global.fakerStatic = faker;
 global.userEvent = userEvent;
 global.TextEncoder = TextEncoder;

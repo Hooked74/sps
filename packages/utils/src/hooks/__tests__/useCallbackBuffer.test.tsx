@@ -1,4 +1,3 @@
-import { expect } from "@jest/globals";
 import { useCallbackBuffer } from "../useCallbackBuffer";
 
 describe("utils/hooks/useCallbackBuffer", () => {
@@ -11,8 +10,8 @@ describe("utils/hooks/useCallbackBuffer", () => {
     result.current.push(mockFn, ...fakeArgs.slice().reverse());
     result.current.flush();
 
-    expect(mockFn).toHaveBeenNthCalledWith(1, ...fakeArgs);
-    expect(mockFn).toHaveBeenNthCalledWith(2, ...fakeArgs.reverse());
+    expectJest(mockFn).toHaveBeenNthCalledWith(1, ...fakeArgs);
+    expectJest(mockFn).toHaveBeenNthCalledWith(2, ...fakeArgs.reverse());
   });
 
   it("Не должен сбросить буфер во время rerender и должен очистить буфер с помощью flush после", () => {
@@ -26,8 +25,8 @@ describe("utils/hooks/useCallbackBuffer", () => {
     rerender();
     result.current.flush();
 
-    expect(mockFn).toHaveBeenNthCalledWith(1, ...fakeArgs);
-    expect(mockFn).toHaveBeenNthCalledWith(2, ...fakeArgs.reverse());
+    expectJest(mockFn).toHaveBeenNthCalledWith(1, ...fakeArgs);
+    expectJest(mockFn).toHaveBeenNthCalledWith(2, ...fakeArgs.reverse());
   });
 
   it("Должен очистить буфер, вызвав функцию без аргументов", () => {
@@ -37,7 +36,7 @@ describe("utils/hooks/useCallbackBuffer", () => {
     result.current.push(mockFn);
     result.current.flush();
 
-    expect(mockFn).toHaveBeenCalledWith();
+    expectJest(mockFn).toHaveBeenCalledWith();
   });
 
   it("Должена произойти ошибка при очищении буфера", () => {
@@ -49,6 +48,6 @@ describe("utils/hooks/useCallbackBuffer", () => {
 
     result.current.push(mockFn);
 
-    expect(() => result.current.flush()).toThrowError(fakeErrorMessage);
+    expectJest(() => result.current.flush()).toThrowError(fakeErrorMessage);
   });
 });

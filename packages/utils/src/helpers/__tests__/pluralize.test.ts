@@ -1,30 +1,29 @@
 import { prepareLanguageСases, prepareLanguageСasesOfOne } from "..";
 import { GenderTypes, PluralAccusativeCaseTypes } from "../../constants";
 import { pluralize, pluralizeFromLanguageCases } from "../pluralize";
-import { expect } from "@jest/globals";
 
 describe("utils/helpers/pluralize", () => {
   const mockArray = ["Автомобиль", "Автомобиля", "Автомобилей"];
 
   describe("pluralize", () => {
     it("Должен вернуть Автомобиль", () => {
-      expect(pluralize(1, mockArray)).toBe("Автомобиль");
+      expectJest(pluralize(1, mockArray)).toBe("Автомобиль");
     });
 
     it("Должен вернуть Автомобиля", () => {
-      expect(pluralize(2, mockArray)).toBe("Автомобиля");
+      expectJest(pluralize(2, mockArray)).toBe("Автомобиля");
     });
 
     it("Должен вернуть Автомобилей", () => {
-      expect(pluralize(5, mockArray)).toBe("Автомобилей");
+      expectJest(pluralize(5, mockArray)).toBe("Автомобилей");
     });
 
     it("Должен вернуть Автомобилей", () => {
-      expect(pluralize(100, mockArray)).toBe("Автомобилей");
+      expectJest(pluralize(100, mockArray)).toBe("Автомобилей");
     });
 
     it("Должен вернуть Автомобилей", () => {
-      expect(pluralize(1000, mockArray)).toBe("Автомобилей");
+      expectJest(pluralize(1000, mockArray)).toBe("Автомобилей");
     });
   });
 
@@ -57,18 +56,18 @@ describe("utils/helpers/pluralize", () => {
     );
 
     it("Должен вернуть автомобиля", () => {
-      expect(pluralizeFromLanguageCases(3, mockLanguageCases)).toBe(
+      expectJest(pluralizeFromLanguageCases(3, mockLanguageCases)).toBe(
         mockLanguageCases.singular.genitive
       );
     });
 
     it("Должен вернуть автомобиль", () => {
-      expect(pluralizeFromLanguageCases(1, mockLanguageCases)).toBe(
+      expectJest(pluralizeFromLanguageCases(1, mockLanguageCases)).toBe(
         mockLanguageCases.singular.nominative
       );
     });
     it("Должен вернуть автомобили", () => {
-      expect(pluralizeFromLanguageCases(5, mockLanguageCases)).toBe(
+      expectJest(pluralizeFromLanguageCases(5, mockLanguageCases)).toBe(
         mockLanguageCases.plural.genitive
       );
     });

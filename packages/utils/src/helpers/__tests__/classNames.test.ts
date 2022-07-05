@@ -1,9 +1,8 @@
 import { classNames } from "../classNames";
-import { expect } from "@jest/globals";
 
 describe("utils/helpers/classNames", () => {
   it("Должен вернуть строку, при передачи объекта с пустыми и булиановыми значениями", () => {
-    expect(
+    expectJest(
       classNames({
         a: true,
         b: false,
@@ -16,60 +15,60 @@ describe("utils/helpers/classNames", () => {
   });
 
   it("Должен проигнорировать все значения, приводящие к false", () => {
-    expect(classNames("a", 0, null, undefined, 1, false, "b")).toEqual("a 1 b");
+    expectJest(classNames("a", 0, null, undefined, 1, false, "b")).toEqual("a 1 b");
   });
 
   it("Должен поддерживать разного типа аргументы(объекты, строки и тд)", () => {
-    expect(classNames({ a: true }, "b", 0)).toEqual("a b");
+    expectJest(classNames({ a: true }, "b", 0)).toEqual("a b");
   });
 
   it("Должен убрать пустые аргументы", () => {
-    expect(classNames("", "b", {}, "")).toEqual("b");
+    expectJest(classNames("", "b", {}, "")).toEqual("b");
   });
 
   it("Возвращает пустую строку для пустой конфигурации", () => {
-    expect(classNames({})).toEqual("");
+    expectJest(classNames({})).toEqual("");
   });
 
   it("Поддерживает массив названий классов", () => {
-    expect(classNames(["a", "b"])).toEqual("a b");
+    expectJest(classNames(["a", "b"])).toEqual("a b");
   });
 
   it("Присоединяет аргументы массива к строчным аргументам", () => {
-    expect(classNames(["a", "b"], "c")).toEqual("a b c");
-    expect(classNames("c", ["a", "b"])).toEqual("c a b");
+    expectJest(classNames(["a", "b"], "c")).toEqual("a b c");
+    expectJest(classNames("c", ["a", "b"])).toEqual("c a b");
   });
 
   it("Обрабатывает несколько аргументов массива", () => {
-    expect(classNames(["a", "b"], ["c", "d"])).toEqual("a b c d");
+    expectJest(classNames(["a", "b"], ["c", "d"])).toEqual("a b c d");
   });
 
   it("Обрабатывает массивы, которые включают в значения, приводящие к false", () => {
-    expect(classNames(["a", 0, null, undefined, false, true, "b"])).toEqual("a b");
+    expectJest(classNames(["a", 0, null, undefined, false, true, "b"])).toEqual("a b");
   });
 
   it("Обрабатывает массивы, которые включают вложенные массивы", () => {
-    expect(classNames(["a", ["b", "c"]])).toEqual("a b c");
+    expectJest(classNames(["a", ["b", "c"]])).toEqual("a b c");
   });
 
   it("Обрабатывает массивы, которые включают объекты", () => {
-    expect(classNames(["a", { b: true, c: false }])).toEqual("a b");
+    expectJest(classNames(["a", { b: true, c: false }])).toEqual("a b");
   });
 
   it("Jбрабатывает глубокую рекурсию", () => {
-    expect(classNames(["a", ["b", ["c", { d: true }]]])).toEqual("a b c d");
+    expectJest(classNames(["a", ["b", ["c", { d: true }]]])).toEqual("a b c d");
   });
 
   it("Обрабатывает пустой массив", () => {
-    expect(classNames("a", [])).toEqual("a");
+    expectJest(classNames("a", [])).toEqual("a");
   });
 
   it("Обрабатывает пустую глубокую вложенность", () => {
-    expect(classNames("a", [[]])).toEqual("a");
+    expectJest(classNames("a", [[]])).toEqual("a");
   });
 
-  it("handles all types of truthy and falsy property values as expected", function () {
-    expect(
+  it("handles all types of truthy and falsy property values as expectJested", function () {
+    expectJest(
       classNames({
         // falsy:
         null: null,
@@ -96,7 +95,7 @@ describe("utils/helpers/classNames", () => {
   });
 
   it("Обрабатывает метод toString(), определенный в объекте", () => {
-    expect(
+    expectJest(
       classNames({
         toString: () => "classFromMethod",
       })
@@ -111,6 +110,6 @@ describe("utils/helpers/classNames", () => {
     }
     class Class2 extends Class1 {}
 
-    expect(classNames(new Class2())).toEqual("classFromMethod");
+    expectJest(classNames(new Class2())).toEqual("classFromMethod");
   });
 });
