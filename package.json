@@ -14,6 +14,7 @@
     "test:ci": "./cli/test --testDir packages --ci --updateSnapshot --bail=1 --colors --passWithNoTests --forceExit",
     "test:ci:coverage": "npm run test:ci -- --coverage",
     "test:ci:report": "npm run test:ci:coverage -- --testLocationInResults --json --outputFile=\"coverage/report.json\"",
+    "test:ci:report:gnomon": "npm run test:ci:coverage -- --testLocationInResults --json --outputFile=\"coverage/report.json\" | gnomon --medium=1.0 --high=5.0 --real-time=false",
     "test:smoke": "npm run test:ci -- --changedSince $(npm run git:tag:commit:latest --silent)",
     "test:smoke:coverage": "npm run test:smoke -- --coverage",
     "test:smoke:report": "npm run test:smoke:coverage -- --testLocationInResults --json --outputFile=\"coverage/report.json\"",

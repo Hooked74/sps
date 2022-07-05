@@ -49,7 +49,7 @@ jobs:
 
       - name: Test Packages
         run: |
-          npm run test:ci:report
+          npm run test:ci:report:gnomon
 
       - name: Publish Jest Results
         uses: ArtiomTr/jest-coverage-report-action@v2
