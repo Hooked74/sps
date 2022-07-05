@@ -58,3 +58,4 @@ jobs:
           coverage-file: ./coverage/report.json
           base-coverage-file: ./coverage/report.json
           skip-step: all
+          annotations: failed-tests
