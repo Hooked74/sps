@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/hooked74/sps/compare/v0.3.2...v0.4.0) (2022-07-12)
+
+
+### Bug Fixes
+
+* **#85:** [types] add symbol to Collection types ([4c02eb0](https://github.com/hooked74/sps/commit/4c02eb02fd4ec844498591d4fec02df80341d898)), closes [#85](https://github.com/hooked74/sps/issues/85)
+* **#85:** [utils] add new declares for has and set methods in GlobalManager ([612f405](https://github.com/hooked74/sps/commit/612f4056a4daa2ad9c8514e03ee50cc177bb4e6b)), closes [#85](https://github.com/hooked74/sps/issues/85)
+
+
+### Features
+
+* **#85:** [logger] add logger package ([ec3bb81](https://github.com/hooked74/sps/commit/ec3bb81c59740e0ca7b8be0e9dcd6e35564d8621)), closes [#85](https://github.com/hooked74/sps/issues/85)
+* **#85:** [utils] add polyfills ([6d0f513](https://github.com/hooked74/sps/commit/6d0f513766ba10fffed743290bf7837b6d3fc86e)), closes [#85](https://github.com/hooked74/sps/issues/85)
+
+
+
+
+
 ## [0.3.2](https://github.com/hooked74/sps/compare/v0.3.1...v0.3.2) (2022-07-05)
 
 **Note:** Version bump only for package h74-sps

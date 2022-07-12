@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/hooked74/sps/compare/v0.3.2...v0.4.0) (2022-07-12)
+
+
+### Bug Fixes
+
+* **#85:** [types] add symbol to Collection types ([4c02eb0](https://github.com/hooked74/sps/commit/4c02eb02fd4ec844498591d4fec02df80341d898)), closes [#85](https://github.com/hooked74/sps/issues/85)
+
+
+
+
+
 ## [0.3.1](https://github.com/hooked74/sps/compare/v0.3.0...v0.3.1) (2022-07-05)
 
 **Note:** Version bump only for package @h74-sps/types
