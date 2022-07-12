@@ -2,3 +2,4 @@
 *.html
 **/dist
 **/coverage
+**/node_modules

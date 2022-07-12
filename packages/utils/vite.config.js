@@ -12,6 +12,7 @@ module.exports = createLibConfig({
           uuid: "uuid",
           "file-saver": "fileSaver",
           "path-to-regexp": "pathToRegexp",
+          "lodash/throttle": "throttle",
         },
       },
     },

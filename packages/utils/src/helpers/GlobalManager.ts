@@ -17,6 +17,8 @@ class _GlobalManager {
     return !this.isClient();
   }
 
+  public has<Key extends keyof GlobalThis>(key: Key): boolean;
+  public has(key: string): boolean;
   public has(key: string) {
     return Boolean((this.globalThis as any)[key]);
   }
@@ -27,6 +29,11 @@ class _GlobalManager {
     return (this.globalThis as any)[key] as Value;
   }
 
+  public set<Key extends keyof GlobalThis, Value extends GlobalThis[Key]>(
+    key: Key,
+    value: Value
+  ): void;
+  public set<Value>(key: string, value: Value): void;
   public set<Value>(key: string, value: Value) {
     (this.globalThis as any)[key] = value;
   }
