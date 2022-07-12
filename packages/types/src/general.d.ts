@@ -23,13 +23,13 @@ declare type ConstructorType<T> = T extends new (...args: any[]) => infer P ? P 
  * *Collection*
  */
 declare interface Dictionary<T> {
-  [key: string]: T;
+  [key: string | symbol]: T;
 }
 declare interface Tuple<T> {
   [key: number]: T;
 }
 declare interface ReadonlyDictionary<T> {
-  readonly [key: string]: T;
+  readonly [key: string | symbol]: T;
 }
 declare type SkipFirstArrayElement<Array extends any[]> = Array extends [any, ...infer P]
   ? P
