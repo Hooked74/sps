@@ -1,0 +1,33 @@
+{
+  "name": "@h74-sps/validation",
+  "version": "0.0.0",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "types": "./src/types.d.ts",
+  "main": "./dist/validation.umd.js",
+  "module": "./dist/validation.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/validation.es.js",
+      "require": "./dist/validation.umd.js"
+    }
+  },
+  "scripts": {
+    "build": "../../cli/cross-env NODE_ENV=production vite build --mode production",
+    "build:watch": "../../cli/cross-env NODE_ENV=development vite build --mode development --watch",
+    "test": "../../cli/test"
+  },
+  "dependencies": {
+    "@h74-sps/types": "^0.4.0",
+    "@h74-sps/vite-lib-config": "^0.4.0",
+    "@types/semver": "^7.3.9",
+    "joi": "^17.6.0",
+    "semver": "^7.3.7"
+  },
+  "repository": "https://github.com/hooked74/sps.git",
+  "publishConfig": {
+    "access": "public"
+  }
+}
