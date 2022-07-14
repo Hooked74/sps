@@ -1,5 +1,5 @@
 /// <reference types="@h74-sps/types" />
-/// <reference types="./modules" />
+/// <reference path="./modules.d.ts" />
 
 export * from "./types";
 export * from "./constants";

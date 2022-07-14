@@ -1,4 +1,4 @@
-export enum LoggerLevels {
+export enum LogLevels {
   ERROR = "error",
   WARN = "warn",
   INFO = "info",
@@ -7,15 +7,15 @@ export enum LoggerLevels {
 
 export const DefaultWinstonFormattedLevels = {
   levels: {
-    [LoggerLevels.ERROR]: 0,
-    [LoggerLevels.WARN]: 1,
-    [LoggerLevels.INFO]: 2,
-    [LoggerLevels.DEBUG]: 3,
+    [LogLevels.ERROR]: 0,
+    [LogLevels.WARN]: 1,
+    [LogLevels.INFO]: 2,
+    [LogLevels.DEBUG]: 3,
   },
   colors: {
-    [LoggerLevels.ERROR]: "red",
-    [LoggerLevels.WARN]: "yellow",
-    [LoggerLevels.INFO]: "green",
-    [LoggerLevels.DEBUG]: "blue",
+    [LogLevels.ERROR]: "red",
+    [LogLevels.WARN]: "yellow",
+    [LogLevels.INFO]: "green",
+    [LogLevels.DEBUG]: "blue",
   },
 };
