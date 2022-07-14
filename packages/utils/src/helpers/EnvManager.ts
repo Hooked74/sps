@@ -1,10 +1,6 @@
 class _EnvManager {
   private readonly parsedEnvMap = new Map();
 
-  get env() {
-    return typeof process !== "undefined" ? process.env : import.meta.env;
-  }
-
   private parse<Value>(value: Value) {
     try {
       return JSON.parse(value as any) as Value;
@@ -18,7 +14,14 @@ class _EnvManager {
     defaultValue?: NodeJS.CustomProcessEnv[Key]
   ): NodeJS.CustomProcessEnv[Key] {
     if (!this.parsedEnvMap.has(key)) {
-      this.parsedEnvMap.set(key, this.parse(this.env[key]) ?? defaultValue);
+      this.parsedEnvMap.set(
+        key,
+        this.parse(
+          typeof process !== "undefined" && typeof process.env[key] !== "undefined"
+            ? process.env[key]
+            : import.meta.env[key]
+        ) ?? defaultValue
+      );
     }
 
     return this.parsedEnvMap.get(key);
@@ -29,6 +32,10 @@ class _EnvManager {
     value: NodeJS.CustomProcessEnv[Key]
   ) {
     return this.get(key) === value;
+  }
+
+  public clearCache() {
+    this.parsedEnvMap.clear();
   }
 }
 

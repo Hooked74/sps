@@ -1,10 +1,6 @@
 import { EnvManager } from "../EnvManager";
 
 describe("utils/helpers/EnvManager", () => {
-  it("Должен вернуть env", () => {
-    expectJest(EnvManager.env).toStrictEqual(process.env);
-  });
-
   it("Должен вернуть значение NODE_ENV", () => {
     expectJest(EnvManager.get("NODE_ENV")).toBe("test");
   });
@@ -24,6 +20,17 @@ describe("utils/helpers/EnvManager", () => {
 
   it("Должен распарсить строковые типы NODE_NO_WARNINGS и VITE_STORAGE_DEVTOOLS_ENABLE", () => {
     expectJest(EnvManager.get("NODE_NO_WARNINGS")).toStrictEqual(expect.any(Number));
-    expectJest(EnvManager.get("VITE_STORAGE_DEVTOOLS_ENABLE")).toStrictEqual(expect.any(Boolean));
+    expectJest(EnvManager.get("VITE_TEST_BUILD")).toStrictEqual(expect.any(Boolean));
+  });
+
+  it("Должен очистить закешированные значения запрошенных переменных окружения", () => {
+    process.env.NODE_NO_WARNINGS = "1";
+    expectJest(EnvManager.get("NODE_NO_WARNINGS")).toBe(1);
+
+    process.env.NODE_NO_WARNINGS = "0";
+    expectJest(EnvManager.get("NODE_NO_WARNINGS")).toBe(1);
+
+    EnvManager.clearCache();
+    expectJest(EnvManager.get("NODE_NO_WARNINGS")).toBe(0);
   });
 });
