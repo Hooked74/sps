@@ -1,5 +1,5 @@
 import { LoggerFactory } from "../LoggerFactory";
-import { LoggerLevels } from "../constants";
+import { LogLevels } from "../constants";
 import { MockTransport } from "./__mocks__/LoggerFactory.mock";
 
 jest.useFakeTimers();
@@ -98,7 +98,7 @@ describe("utils/helpers/LoggerFactory", () => {
     const mockServiceName = "debug";
     const logger = LoggerFactory.create({
       serviceName: mockServiceName,
-      level: LoggerLevels.DEBUG,
+      level: LogLevels.DEBUG,
     });
 
     logger.debug(mockObject);
@@ -119,7 +119,7 @@ describe("utils/helpers/LoggerFactory", () => {
     const mockServiceName = "verbose";
     const logger = LoggerFactory.create({
       serviceName: mockServiceName,
-      level: LoggerLevels.DEBUG,
+      level: LogLevels.DEBUG,
     });
 
     expectJest(() => logger.verbose(mockObject)).toThrowError();
@@ -130,13 +130,13 @@ describe("utils/helpers/LoggerFactory", () => {
     const mockServiceName = "log";
     const logger = LoggerFactory.create({
       serviceName: mockServiceName,
-      level: LoggerLevels.DEBUG,
+      level: LogLevels.DEBUG,
     });
 
-    logger.log(LoggerLevels.ERROR, mockObject);
-    logger.log(LoggerLevels.WARN, mockObject);
-    logger.log(LoggerLevels.INFO, mockObject);
-    logger.log(LoggerLevels.DEBUG, mockObject);
+    logger.log(LogLevels.ERROR, mockObject);
+    logger.log(LogLevels.WARN, mockObject);
+    logger.log(LogLevels.INFO, mockObject);
+    logger.log(LogLevels.DEBUG, mockObject);
 
     jest.runAllTimers();
 
@@ -161,13 +161,13 @@ describe("utils/helpers/LoggerFactory", () => {
     const mockServiceName = "log";
     const logger = LoggerFactory.create({
       serviceName: mockServiceName,
-      level: LoggerLevels.ERROR,
+      level: LogLevels.ERROR,
     });
 
-    logger.log(LoggerLevels.ERROR, mockObject);
-    logger.log(LoggerLevels.WARN, mockObject);
-    logger.log(LoggerLevels.INFO, mockObject);
-    logger.log(LoggerLevels.DEBUG, mockObject);
+    logger.log(LogLevels.ERROR, mockObject);
+    logger.log(LogLevels.WARN, mockObject);
+    logger.log(LogLevels.INFO, mockObject);
+    logger.log(LogLevels.DEBUG, mockObject);
 
     jest.runAllTimers();
 
@@ -255,7 +255,7 @@ describe("utils/helpers/LoggerFactory", () => {
 
     logger.configure({
       transportsFactory: () => [new MockTransport()],
-      level: LoggerLevels.ERROR,
+      level: LogLevels.ERROR,
     });
 
     logger.info(mockObject);
@@ -284,7 +284,7 @@ describe("utils/helpers/LoggerFactory", () => {
 
     LoggerFactory.updateOptions({
       transportsFactory: () => [new MockTransport()],
-      level: LoggerLevels.ERROR,
+      level: LogLevels.ERROR,
     });
 
     logger.info(mockObject);
@@ -328,7 +328,7 @@ describe("utils/helpers/LoggerFactory", () => {
     LoggerFactory.updateOptions(
       {
         transportsFactory: () => [new MockTransport()],
-        level: LoggerLevels.ERROR,
+        level: LogLevels.ERROR,
       },
       false
     );
@@ -373,7 +373,7 @@ describe("utils/helpers/LoggerFactory", () => {
 
     LoggerFactory.updateOptions({
       transportsFactory: () => [new MockTransport()],
-      level: LoggerLevels.ERROR,
+      level: LogLevels.ERROR,
     });
 
     logger.info(mockObject);
@@ -388,7 +388,7 @@ describe("utils/helpers/LoggerFactory", () => {
     logger.configure({
       overrideTransports: true,
       transportsFactory: () => [new MockTransport()],
-      level: LoggerLevels.DEBUG,
+      level: LogLevels.DEBUG,
     });
 
     logger.debug(mockObject);
@@ -422,7 +422,7 @@ describe("utils/helpers/LoggerFactory", () => {
       serviceName: mockServiceName,
     });
 
-    LoggerFactory.updateOptions({ level: LoggerLevels.DEBUG });
+    LoggerFactory.updateOptions({ level: LogLevels.DEBUG });
     LoggerFactory.reset();
 
     logger.info(mockObject);

@@ -1,17 +1,17 @@
 {
-  "name": "@h74-sps/validation",
-  "version": "0.5.0",
+  "name": "@h74-sps/fetcher",
+  "version": "0.0.0",
   "files": [
     "dist",
     "src"
   ],
-  "types": "./src/types.d.ts",
-  "main": "./dist/validation.umd.js",
-  "module": "./dist/validation.es.js",
+  "types": "./src/main.ts",
+  "main": "./dist/fetcher.umd.js",
+  "module": "./dist/fetcher.es.js",
   "exports": {
     ".": {
-      "import": "./dist/validation.es.js",
-      "require": "./dist/validation.umd.js"
+      "import": "./dist/fetcher.es.js",
+      "require": "./dist/fetcher.umd.js"
     }
   },
   "scripts": {
@@ -20,11 +20,16 @@
     "test": "../../cli/test"
   },
   "dependencies": {
+    "@h74-sps/logger": "^0.5.0",
     "@h74-sps/types": "^0.5.0",
+    "@h74-sps/utils": "^0.5.0",
+    "@h74-sps/validation": "^0.5.0",
     "@h74-sps/vite-lib-config": "^0.5.0",
-    "@types/semver": "^7.3.10",
-    "joi": "^17.6.0",
-    "semver": "^7.3.7"
+    "@types/http-errors": "^1.8.2",
+    "axios": "^0.27.2",
+    "http-errors": "^2.0.0",
+    "http-status-codes": "^2.2.0",
+    "reflect-metadata": "^0.1.13"
   },
   "repository": "https://github.com/hooked74/sps.git",
   "publishConfig": {

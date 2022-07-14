@@ -4,7 +4,7 @@ import createLogger from "winston/lib/winston/create-logger";
 import { levels } from "logform";
 import { formats } from "./formats";
 import { LoggerOptions, Logger, UpdatedLoggerOptions } from "./types";
-import { DefaultWinstonFormattedLevels, LoggerLevels } from "./constants";
+import { DefaultWinstonFormattedLevels, LogLevels } from "./constants";
 import { ConsoleTransport } from "./transports";
 
 class _LoggerFactory {
@@ -14,7 +14,7 @@ class _LoggerFactory {
 
   private readonly staticOptions: LoggerOptions = {
     serviceName: "default",
-    level: LoggerLevels.INFO,
+    level: LogLevels.INFO,
     transportsFactory: () => [
       new ConsoleTransport({
         handleExceptions: true,

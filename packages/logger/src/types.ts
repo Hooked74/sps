@@ -5,12 +5,12 @@ import type {
   LogMethod as WinstonLogMethod,
 } from "winston";
 import type TransportStream from "winston-transport";
-import type { LoggerLevels } from "./constants";
+import type { LogLevels } from "./constants";
 
 export interface LoggerOptions
   extends Omit<WinstonLoggerOptions, "levels" | "level" | "transports"> {
   serviceName: string;
-  level?: LoggerLevels;
+  level?: LogLevels;
   overrideTransports?: boolean;
   transportsFactory?: () => TransportStream[];
 }
@@ -18,9 +18,9 @@ export interface LoggerOptions
 export type UpdatedLoggerOptions = Omit<Partial<LoggerOptions>, "serviceName" | "defaultMeta">;
 
 export interface LogMethod extends WinstonLogMethod {
-  <Message>(level: LoggerLevels, message: Message, callback?: WinstonLogCallback): Logger;
+  <Message>(level: LogLevels, message: Message, callback?: WinstonLogCallback): Logger;
   <Message, Meta>(
-    level: LoggerLevels,
+    level: LogLevels,
     message: Message,
     meta?: Meta,
     callback?: WinstonLogCallback

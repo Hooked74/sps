@@ -10,7 +10,7 @@ export const createLibConfig = (config: UserConfig) =>
     clearScreen: false,
     define: Object.entries(process.env).reduce(
       (env, [key, value]) => {
-        if (/^VITE_/.test(key)) {
+        if (/^SPS_/.test(key)) {
           (env as Dictionary<string>)[`process.env.${key}`] = JSON.stringify(value);
         }
 
