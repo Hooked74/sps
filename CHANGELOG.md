@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/hooked74/sps/compare/v0.5.0...v0.6.0) (2022-07-14)
+
+
+### Bug Fixes
+
+* **#88:** [utils] rework get variable and add clear cache in EnvManager ([d146bd6](https://github.com/hooked74/sps/commit/d146bd6b0abe3a8582a51d9306eca511307e26bc)), closes [#88](https://github.com/hooked74/sps/issues/88)
+* **#88:** [vite-lib-config] change define prefix ([e317dfb](https://github.com/hooked74/sps/commit/e317dfbdfb8378405d1ffc13b1941145cf3de98c)), closes [#88](https://github.com/hooked74/sps/issues/88)
+
+
+### Features
+
+* **#88:** [fetcher] add fetcher package ([406b173](https://github.com/hooked74/sps/commit/406b173ab0857fbea3851f56ea8427ae0b121584)), closes [#88](https://github.com/hooked74/sps/issues/88)
+* **#88:** [types] add new properties in CustomProcessEnv ([34a3fcd](https://github.com/hooked74/sps/commit/34a3fcd2e61bf8cbb0adb787d04faa8fd03f72e7)), closes [#88](https://github.com/hooked74/sps/issues/88)
+
+
+
+
+
 # [0.5.0](https://github.com/hooked74/sps/compare/v0.4.0...v0.5.0) (2022-07-13)
 
 

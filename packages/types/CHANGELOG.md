@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/hooked74/sps/compare/v0.5.0...v0.6.0) (2022-07-14)
+
+
+### Features
+
+* **#88:** [types] add new properties in CustomProcessEnv ([34a3fcd](https://github.com/hooked74/sps/commit/34a3fcd2e61bf8cbb0adb787d04faa8fd03f72e7)), closes [#88](https://github.com/hooked74/sps/issues/88)
+
+
+
+
+
 # [0.5.0](https://github.com/hooked74/sps/compare/v0.4.0...v0.5.0) (2022-07-13)
 
 **Note:** Version bump only for package @h74-sps/types

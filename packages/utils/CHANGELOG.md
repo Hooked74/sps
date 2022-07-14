@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/hooked74/sps/compare/v0.5.0...v0.6.0) (2022-07-14)
+
+
+### Bug Fixes
+
+* **#88:** [utils] rework get variable and add clear cache in EnvManager ([d146bd6](https://github.com/hooked74/sps/commit/d146bd6b0abe3a8582a51d9306eca511307e26bc)), closes [#88](https://github.com/hooked74/sps/issues/88)
+
+
+
+
+
 # [0.5.0](https://github.com/hooked74/sps/compare/v0.4.0...v0.5.0) (2022-07-13)
 
 **Note:** Version bump only for package @h74-sps/utils

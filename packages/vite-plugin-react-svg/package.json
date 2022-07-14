@@ -1,6 +1,6 @@
 {
   "name": "@h74-sps/vite-plugin-react-svg",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "files": [
     "dist",
     "src"
