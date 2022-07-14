@@ -22,7 +22,7 @@
   "dependencies": {
     "@h74-sps/types": "^0.5.0",
     "@h74-sps/vite-lib-config": "^0.5.0",
-    "@types/semver": "^7.3.9",
+    "@types/semver": "^7.3.10",
     "joi": "^17.6.0",
     "semver": "^7.3.7"
   },
