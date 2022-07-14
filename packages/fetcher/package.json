@@ -1,0 +1,38 @@
+{
+  "name": "@h74-sps/fetcher",
+  "version": "0.0.0",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "types": "./src/main.ts",
+  "main": "./dist/fetcher.umd.js",
+  "module": "./dist/fetcher.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/fetcher.es.js",
+      "require": "./dist/fetcher.umd.js"
+    }
+  },
+  "scripts": {
+    "build": "../../cli/cross-env NODE_ENV=production vite build --mode production",
+    "build:watch": "../../cli/cross-env NODE_ENV=development vite build --mode development --watch",
+    "test": "../../cli/test"
+  },
+  "dependencies": {
+    "@h74-sps/logger": "^0.5.0",
+    "@h74-sps/types": "^0.5.0",
+    "@h74-sps/utils": "^0.5.0",
+    "@h74-sps/validation": "^0.5.0",
+    "@h74-sps/vite-lib-config": "^0.5.0",
+    "@types/http-errors": "^1.8.2",
+    "axios": "^0.27.2",
+    "http-errors": "^2.0.0",
+    "http-status-codes": "^2.2.0",
+    "reflect-metadata": "^0.1.13"
+  },
+  "repository": "https://github.com/hooked74/sps.git",
+  "publishConfig": {
+    "access": "public"
+  }
+}
