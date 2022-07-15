@@ -1,4 +1,3 @@
-import { expect } from "@jest/globals";
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
 import { withHandleRequestExceptionInterceptor } from "../withHandleRequestExceptionInterceptor";
@@ -30,7 +29,7 @@ describe("fetcher/interceptors/withHandleRequestExceptionInterceptor", () => {
       error = e;
     }
 
-    expect(error).toBeInstanceOf(AxiosRequestException);
-    expect(error.originalError).toBe(newError);
+    expectJest(error).toBeInstanceOf(AxiosRequestException);
+    expectJest(error.originalError).toBe(newError);
   });
 });

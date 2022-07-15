@@ -1,7 +1,6 @@
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
 import validation, { ValidationException } from "@h74-sps/validation";
-import { expect } from "@jest/globals";
 import { withValidationInterceptor } from "..";
 
 describe("fetcher/interceptors/withValidationInterceptor", () => {
@@ -29,7 +28,7 @@ describe("fetcher/interceptors/withValidationInterceptor", () => {
         .required(),
     });
 
-    expect(response.data).toEqual(responseDataMock);
+    expectJest(response.data).toEqual(responseDataMock);
   });
 
   it("Должно сработать исключение при невалидных данных", async () => {
@@ -50,6 +49,6 @@ describe("fetcher/interceptors/withValidationInterceptor", () => {
       error = e;
     }
 
-    expect(error).toBeInstanceOf(ValidationException);
+    expectJest(error).toBeInstanceOf(ValidationException);
   });
 });

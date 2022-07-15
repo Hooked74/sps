@@ -1,4 +1,3 @@
-import { expect } from "@jest/globals";
 import { fetchAdapter } from "../FetchAdapter";
 import { NotFound as NotFoundException } from "http-errors";
 import { AXIOS_DEFAULT_CONFIG } from "./__mocks__/FetchAdapter.mock";
@@ -40,14 +39,14 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
     const response = await fetchAdapter(config);
 
-    expect(response).toHaveProperty("status", defaultStatus);
-    expect(response).toHaveProperty("statusText", defaultStatusText);
-    expect(response).toHaveProperty("config", config);
-    expect(response).toHaveProperty("data", JSON.parse(defaultBody));
-    expect(response).toHaveProperty("headers");
-    expect(response).toHaveProperty("request");
-    expect(response.request).toBeInstanceOf(Request);
-    expect(response.headers).toBeInstanceOf(Object);
+    expectJest(response).toHaveProperty("status", defaultStatus);
+    expectJest(response).toHaveProperty("statusText", defaultStatusText);
+    expectJest(response).toHaveProperty("config", config);
+    expectJest(response).toHaveProperty("data", JSON.parse(defaultBody));
+    expectJest(response).toHaveProperty("headers");
+    expectJest(response).toHaveProperty("request");
+    expectJest(response.request).toBeInstanceOf(Request);
+    expectJest(response.headers).toBeInstanceOf(Object);
   });
 
   describe("headers", () => {
@@ -64,7 +63,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
       const { request } = await fetchAdapter(config);
 
-      expect(request.headers.get(customHeaderName)).toBe(config.headers[customHeaderName]);
+      expectJest(request.headers.get(customHeaderName)).toBe(config.headers[customHeaderName]);
     });
 
     it("Должен удалить заголовок Content-Type в запросе, если нет body", async () => {
@@ -79,7 +78,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
       const { request } = await fetchAdapter(config);
 
-      expect(request.headers.has("Content-Type")).toBeFalsy();
+      expectJest(request.headers.has("Content-Type")).toBeFalsy();
     });
 
     it("Должен удалить заголовок Content-Type в запросе, если в body FormData", async () => {
@@ -95,7 +94,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
       const { request } = await fetchAdapter(config);
 
-      expect(request.headers.has("Content-Type")).toBeFalsy();
+      expectJest(request.headers.has("Content-Type")).toBeFalsy();
     });
 
     it("Должен оставить заголовок Content-Type в запросе, если body – json", async () => {
@@ -111,7 +110,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
       const { request } = await fetchAdapter(config);
 
-      expect(request.headers.has("Content-Type")).toBeTruthy();
+      expectJest(request.headers.has("Content-Type")).toBeTruthy();
     });
 
     it("Должен добавить заголовок Authorization в запросе, если есть заголовок auth", async () => {
@@ -126,7 +125,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
       const { request } = await fetchAdapter(config);
 
-      expect(request.headers.has("Authorization")).toBeTruthy();
+      expectJest(request.headers.has("Authorization")).toBeTruthy();
     });
 
     it("Должен добавить заголовок xsrfHeaderName со значением куки xsrfCookieName, если запрос не кросс-доменный", async () => {
@@ -147,8 +146,8 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
       const { request } = await fetchAdapter(config);
 
-      expect(request.headers.has(xsrfHeaderName)).toBe(true);
-      expect(request.headers.get(xsrfHeaderName)).toBe(xsrfHeaderValue);
+      expectJest(request.headers.has(xsrfHeaderName)).toBe(true);
+      expectJest(request.headers.get(xsrfHeaderName)).toBe(xsrfHeaderValue);
 
       cookieSpy.mockRestore();
     });
@@ -171,8 +170,8 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
       const { request } = await fetchAdapter(config);
 
-      expect(request.headers.has(xsrfHeaderName)).toBe(true);
-      expect(request.headers.get(xsrfHeaderName)).toBe(xsrfHeaderValue);
+      expectJest(request.headers.has(xsrfHeaderName)).toBe(true);
+      expectJest(request.headers.get(xsrfHeaderName)).toBe(xsrfHeaderValue);
 
       cookieSpy.mockRestore();
     });
@@ -180,7 +179,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
   describe("validateStatus", () => {
     it("Должен отработать без исключений при validateStatus = true", () => {
-      expect(
+      expectJest(
         fetchAdapter({
           ...AXIOS_DEFAULT_CONFIG,
           validateStatus: () => true,
@@ -190,7 +189,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
     });
 
     it("Должен выбросить исключение при validateStatus = false", () => {
-      expect(
+      expectJest(
         fetchAdapter({
           ...AXIOS_DEFAULT_CONFIG,
           validateStatus: (status) => status !== 200,
@@ -211,7 +210,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
         baseURL,
       });
 
-      expect(response.request.url).toBe(`${baseURL}${url}`);
+      expectJest(response.request.url).toBe(`${baseURL}${url}`);
     });
 
     it("Не должен учитываться baseUrl при абсолютном url", async () => {
@@ -224,7 +223,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
         baseURL,
       });
 
-      expect(response.request.url).toBe(url);
+      expectJest(response.request.url).toBe(url);
     });
   });
 
@@ -254,8 +253,8 @@ describe("fetcher/adapters/FetchAdapter", () => {
         timeout: 1,
       });
 
-      expect(result).rejects.toThrowError(`Timeout of 1 ms exceeded`);
-      expect(result).rejects.toThrow(FetchException);
+      expectJest(result).rejects.toThrowError(`Timeout of 1 ms exceeded`);
+      expectJest(result).rejects.toThrow(FetchException);
     });
 
     it("Должен прервать исполнение с исключением по timeout с ошибкой ETIMEDOUT вместо ECONNABORTED", async () => {
@@ -274,7 +273,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
         err = e;
       }
 
-      expect(err.code).toBe("ETIMEDOUT");
+      expectJest(err.code).toBe("ETIMEDOUT");
     });
 
     it("Должен прервать исполнение по CancelToken", () => {
@@ -288,8 +287,8 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
       cancelTokenSource.cancel();
 
-      expect(result).rejects.toThrowError("Request aborted");
-      expect(result).rejects.toThrow(FetchException);
+      expectJest(result).rejects.toThrowError("Request aborted");
+      expectJest(result).rejects.toThrow(FetchException);
     });
 
     it("Должен прервать исполнение всех запросов с исключением по внешнему AbortController'у", async () => {
@@ -306,11 +305,11 @@ describe("fetcher/adapters/FetchAdapter", () => {
 
       await Promise.all(promises);
 
-      expect(mockFn).toHaveBeenCalledTimes(2);
-      expect(mockFn.mock.calls[0][0].message).toBe("Request aborted");
-      expect(mockFn.mock.calls[0][0]).toBeInstanceOf(FetchException);
-      expect(mockFn.mock.calls[1][0].message).toBe("Request aborted");
-      expect(mockFn.mock.calls[1][0]).toBeInstanceOf(FetchException);
+      expectJest(mockFn).toHaveBeenCalledTimes(2);
+      expectJest(mockFn.mock.calls[0][0].message).toBe("Request aborted");
+      expectJest(mockFn.mock.calls[0][0]).toBeInstanceOf(FetchException);
+      expectJest(mockFn.mock.calls[1][0].message).toBe("Request aborted");
+      expectJest(mockFn.mock.calls[1][0]).toBeInstanceOf(FetchException);
     });
 
     it('Должен выбросить исключение "Not Found"', async () => {
@@ -321,8 +320,8 @@ describe("fetcher/adapters/FetchAdapter", () => {
         url: fakerStatic.internet.url(),
       });
 
-      expect(result).rejects.toThrowError("Not Found");
-      expect(result).rejects.toThrow(FetchException);
+      expectJest(result).rejects.toThrowError("Not Found");
+      expectJest(result).rejects.toThrow(FetchException);
     });
   });
 
@@ -342,7 +341,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
         params,
       });
 
-      expect(response.request.url).toBe(buildURL(url, params));
+      expectJest(response.request.url).toBe(buildURL(url, params));
     });
 
     it("Должен сформировать правильный url с параметрами используя функцию paramsSerializer", async () => {
@@ -359,7 +358,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
         paramsSerializer: () => serializedParams,
       });
 
-      expect(response.request.url).toBe(`${url}?${serializedParams}`);
+      expectJest(response.request.url).toBe(`${url}?${serializedParams}`);
     });
   });
 
@@ -371,7 +370,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
         responseType: "text",
       });
 
-      expect(response.data).toBe(defaultBody);
+      expectJest(response.data).toBe(defaultBody);
     });
 
     it('Должен вернуть json object в ответе при responseType: "json"', async () => {
@@ -381,7 +380,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
         responseType: "json",
       });
 
-      expect(response.data).toStrictEqual(JSON.parse(defaultBody));
+      expectJest(response.data).toStrictEqual(JSON.parse(defaultBody));
     });
 
     it('Должен вернуть Blob в ответе при responseType: "blob"', async () => {
@@ -402,7 +401,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
         responseType: "blob",
       });
 
-      expect(response.data).toBe(data);
+      expectJest(response.data).toBe(data);
     });
 
     it("Должен выбросить исключение при несоответствии типов ответа и responseType", () => {
@@ -423,7 +422,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
         responseType: "json",
       });
 
-      expect(response).rejects.toThrowError(FetchException);
+      expectJest(response).rejects.toThrowError(FetchException);
     });
   });
 
@@ -437,7 +436,7 @@ describe("fetcher/adapters/FetchAdapter", () => {
         onUploadProgress: () => {},
       });
 
-      expect(mockXhrAdapter).toHaveBeenCalled();
+      expectJest(mockXhrAdapter).toHaveBeenCalled();
     });
   });
 });

@@ -1,7 +1,6 @@
 import { ValidateResponse } from "../ValidateResponse";
 import validation, { Schema } from "@h74-sps/validation";
 import { AxiosRequestConfig } from "axios";
-import { expect } from "@jest/globals";
 
 jest.mock("axios", () => {
   return { AxiosRequestConfig: class FetcherRequestConfig {} };
@@ -25,7 +24,7 @@ describe("fetcher/decorators/ValidateResponse", () => {
     }
 
     const config = new MockClass().mockMethod({});
-    expect(config.validationSchema).toBe(validationSchema);
+    expectJest(config.validationSchema).toBe(validationSchema);
   });
 
   it("Должен вернуть конфиг, в котором нет validationSchema", () => {
@@ -41,7 +40,7 @@ describe("fetcher/decorators/ValidateResponse", () => {
     }
 
     const config = new MockClass().mockMethod({});
-    expect(config.validationSchema).not.toBe(validationSchema);
+    expectJest(config.validationSchema).not.toBe(validationSchema);
   });
 
   it("Должен создать конфиг, в котором есть validationSchema, если конфиг не был явно передан", () => {
@@ -53,6 +52,6 @@ describe("fetcher/decorators/ValidateResponse", () => {
     }
 
     const config = new MockClass().mockMethod();
-    expect(config.validationSchema).toBe(validationSchema);
+    expectJest(config.validationSchema).toBe(validationSchema);
   });
 });

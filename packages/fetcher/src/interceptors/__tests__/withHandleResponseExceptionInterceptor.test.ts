@@ -1,4 +1,3 @@
-import { expect } from "@jest/globals";
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
 import {
@@ -30,8 +29,8 @@ describe("fetcher/interceptors/withHandleResponseExceptionInterceptor", () => {
       error = e;
     }
 
-    expect(error).toBeInstanceOf(AxiosResponseException);
-    expect(error.originalError.isAxiosError).toBeTruthy();
+    expectJest(error).toBeInstanceOf(AxiosResponseException);
+    expectJest(error.originalError.isAxiosError).toBeTruthy();
   });
 
   it("Должно сработать исключение с типом TimeoutResponseException", async () => {
@@ -45,7 +44,7 @@ describe("fetcher/interceptors/withHandleResponseExceptionInterceptor", () => {
       error = e;
     }
 
-    expect(error).toBeInstanceOf(TimeoutResponseException);
+    expectJest(error).toBeInstanceOf(TimeoutResponseException);
   });
 
   it("Должен вернуть пустой response при отмене запроса", async () => {
@@ -58,7 +57,7 @@ describe("fetcher/interceptors/withHandleResponseExceptionInterceptor", () => {
     source.cancel();
     const response = await req.catch((err) => err);
 
-    expect(response).toEqual({
+    expectJest(response).toEqual({
       data: null,
       status: null,
       statusText: null,
@@ -82,7 +81,7 @@ describe("fetcher/interceptors/withHandleResponseExceptionInterceptor", () => {
       error = e;
     }
 
-    expect(error).toBeInstanceOf(ValidationResponseException);
-    expect(error.originalError).toBe(validationException);
+    expectJest(error).toBeInstanceOf(ValidationResponseException);
+    expectJest(error.originalError).toBe(validationException);
   });
 });
