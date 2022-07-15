@@ -7,10 +7,10 @@
   ],
   "types": "./src/main.ts",
   "main": "./dist/logger.umd.js",
-  "module": "./dist/logger.es.js",
+  "module": "./dist/logger.mjs",
   "exports": {
     ".": {
-      "import": "./dist/logger.es.js",
+      "import": "./dist/logger.mjs",
       "require": "./dist/logger.umd.js"
     }
   },
