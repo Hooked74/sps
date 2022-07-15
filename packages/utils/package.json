@@ -7,10 +7,10 @@
   ],
   "types": "./src/main.ts",
   "main": "./dist/utils.umd.js",
-  "module": "./dist/utils.es.js",
+  "module": "./dist/utils.mjs",
   "exports": {
     ".": {
-      "import": "./dist/utils.es.js",
+      "import": "./dist/utils.mjs",
       "require": "./dist/utils.umd.js"
     }
   },

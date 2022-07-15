@@ -7,10 +7,10 @@
   ],
   "types": "./src/main.ts",
   "main": "./dist/fetcher.umd.js",
-  "module": "./dist/fetcher.es.js",
+  "module": "./dist/fetcher.mjs",
   "exports": {
     ".": {
-      "import": "./dist/fetcher.es.js",
+      "import": "./dist/fetcher.mjs",
       "require": "./dist/fetcher.umd.js"
     }
   },
