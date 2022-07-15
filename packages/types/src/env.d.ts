@@ -11,6 +11,7 @@ declare namespace NodeJS {
     readonly NODE_NO_WARNINGS: int;
     readonly SPS_API_PREFIX: string;
     readonly SPS_FETCHER_LOG_LEVEL: string;
+    readonly SPS_REACT_CONTEXT_STORAGE_LOG_LEVEL: string;
   }
 }
 
