@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/hooked74/sps/compare/v0.6.0...v0.7.0) (2022-07-15)
+
+
+### Features
+
+* **#90:** [react-context-storage] add package ([0dc5857](https://github.com/hooked74/sps/commit/0dc58576136db00c624fc5c3724c982da562e54b)), closes [#90](https://github.com/hooked74/sps/issues/90)
+* **#90:** [types] add new properties in CustomProcessEnv ([c8383bf](https://github.com/hooked74/sps/commit/c8383bf5423c10ab1341b304cd267c19c8540849)), closes [#90](https://github.com/hooked74/sps/issues/90)
+
+
+
+
+
 # [0.6.0](https://github.com/hooked74/sps/compare/v0.5.0...v0.6.0) (2022-07-14)
 
 

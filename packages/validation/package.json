@@ -1,6 +1,6 @@
 {
   "name": "@h74-sps/validation",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "files": [
     "dist",
     "src"
@@ -20,8 +20,8 @@
     "test": "../../cli/test"
   },
   "dependencies": {
-    "@h74-sps/types": "^0.6.0",
-    "@h74-sps/vite-lib-config": "^0.6.0",
+    "@h74-sps/types": "^0.7.0",
+    "@h74-sps/vite-lib-config": "^0.7.0",
     "@types/semver": "^7.3.10",
     "joi": "^17.6.0",
     "semver": "^7.3.7"
