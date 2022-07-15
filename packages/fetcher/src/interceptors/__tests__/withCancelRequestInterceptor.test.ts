@@ -1,4 +1,3 @@
-import { expect } from "@jest/globals";
 import { withCancelRequestInterceptor } from "..";
 import MockAdapter from "axios-mock-adapter";
 import axios, { AxiosRequestConfig, CancelTokenSource } from "axios";
@@ -40,7 +39,7 @@ describe("fetcher/interceptors/withCancelRequestInterceptor", () => {
       error = e;
     }
 
-    expect(error).toBeInstanceOf(axios.Cancel);
+    expectJest(error).toBeInstanceOf(axios.Cancel);
   });
 
   it("Должен сработать cancel при передаче forceCancel", async () => {
@@ -58,7 +57,7 @@ describe("fetcher/interceptors/withCancelRequestInterceptor", () => {
       error = e;
     }
 
-    expect(error).toBeInstanceOf(axios.Cancel);
+    expectJest(error).toBeInstanceOf(axios.Cancel);
   });
 
   it("Должен сработать cancel только при первом запросе", async () => {
@@ -78,8 +77,8 @@ describe("fetcher/interceptors/withCancelRequestInterceptor", () => {
     }
     const response = await axios.get(mockUrl);
 
-    expect(error).toBeInstanceOf(axios.Cancel);
-    expect(response.data).toEqual(responseDataMock);
+    expectJest(error).toBeInstanceOf(axios.Cancel);
+    expectJest(response.data).toEqual(responseDataMock);
   });
 
   it("Должен успешно выполниться запрос", async () => {
@@ -90,6 +89,6 @@ describe("fetcher/interceptors/withCancelRequestInterceptor", () => {
 
     const response = await axios.get(mockUrl);
 
-    expect(response.data).toEqual(responseDataMock);
+    expectJest(response.data).toEqual(responseDataMock);
   });
 });

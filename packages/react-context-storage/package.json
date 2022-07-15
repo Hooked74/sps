@@ -1,17 +1,16 @@
 {
-  "name": "@h74-sps/fetcher",
-  "version": "0.6.0",
+  "name": "@h74-sps/react-context-storage",
+  "version": "0.0.0",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "types": "./src/main.ts",
-  "main": "./dist/fetcher.umd.js",
-  "module": "./dist/fetcher.mjs",
+  "main": "./dist/react-context-storage.umd.js",
+  "module": "./dist/react-context-storage.mjs",
   "exports": {
     ".": {
-      "import": "./dist/fetcher.mjs",
-      "require": "./dist/fetcher.umd.js"
+      "import": "./dist/react-context-storage.es.js",
+      "require": "./dist/react-context-storage.mjs"
     }
   },
   "scripts": {
@@ -23,13 +22,10 @@
     "@h74-sps/logger": "^0.6.0",
     "@h74-sps/types": "^0.6.0",
     "@h74-sps/utils": "^0.6.0",
-    "@h74-sps/validation": "^0.6.0",
     "@h74-sps/vite-lib-config": "^0.6.0",
-    "@types/http-errors": "^1.8.2",
-    "axios": "^0.27.2",
-    "http-errors": "^2.0.0",
-    "http-status-codes": "^2.2.0",
-    "reflect-metadata": "^0.1.13"
+    "@types/react": "^18.0.15",
+    "immer": "^9.0.15",
+    "react": "^18.2.0"
   },
   "repository": "https://github.com/hooked74/sps.git",
   "publishConfig": {

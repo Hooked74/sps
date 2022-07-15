@@ -1,4 +1,3 @@
-import { expect } from "@jest/globals";
 import AxiosException from "axios/lib/core/AxiosError";
 import MockAdapter from "axios-mock-adapter";
 import axios, { AxiosError } from "axios";
@@ -36,9 +35,9 @@ describe("fetcher/interceptors/withConvertExceptionDataBlobToJsonInterceptor", (
       error = e;
     }
 
-    expect(error).toBeInstanceOf(Error);
-    expect(error.isAxiosError).toBeTruthy();
-    expect(error.response.data).toEqual(dataMock);
+    expectJest(error).toBeInstanceOf(Error);
+    expectJest(error.isAxiosError).toBeTruthy();
+    expectJest(error.response.data).toEqual(dataMock);
   });
 
   it("Должен вернуть, переданный в ошибке Blob, без конвертации в JSON", async () => {
@@ -60,8 +59,8 @@ describe("fetcher/interceptors/withConvertExceptionDataBlobToJsonInterceptor", (
       error = e;
     }
 
-    expect(error).toBeInstanceOf(Error);
-    expect(error.isAxiosError).toBeTruthy();
-    expect(error.response.data).toBeInstanceOf(Blob);
+    expectJest(error).toBeInstanceOf(Error);
+    expectJest(error.isAxiosError).toBeTruthy();
+    expectJest(error.response.data).toBeInstanceOf(Blob);
   });
 });
