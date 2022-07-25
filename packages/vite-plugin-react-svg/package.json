@@ -11,8 +11,8 @@
     "build": "../../cli/cross-env NODE_ENV=production tsc"
   },
   "dependencies": {
-    "@svgr/core": "^6.3.0",
-    "esbuild": "^0.14.49",
+    "@svgr/core": "^6.3.1",
+    "esbuild": "^0.14.50",
     "vite": "^3.0.2"
   },
   "repository": "https://github.com/hooked74/sps.git",
