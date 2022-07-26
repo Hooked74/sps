@@ -2,7 +2,8 @@
   "name": "@h74-sps/react-context-storage",
   "version": "0.7.1",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "types": "./src/main.ts",
   "main": "./dist/react-context-storage.umd.js",
