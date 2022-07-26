@@ -1,6 +1,6 @@
 {
   "name": "@h74-sps/vite-lib-config",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "files": [
     "dist",
     "src",
@@ -12,8 +12,8 @@
     "build": "../../cli/cross-env NODE_ENV=production tsc"
   },
   "dependencies": {
-    "@h74-sps/types": "^0.7.3",
-    "@h74-sps/vite-plugin-checker": "^0.7.3",
+    "@h74-sps/types": "^0.7.4",
+    "@h74-sps/vite-plugin-checker": "^0.7.4",
     "@types/fs-extra": "^9.0.13",
     "fs-extra": "^10.1.0",
     "vite": "^3.0.2"
